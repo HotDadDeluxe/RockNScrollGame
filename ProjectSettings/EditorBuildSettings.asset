@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OptionsScene.unity
     guid: 4be4aa56cb4861c44868b505b007b6b4
+  - enabled: 1
+    path: Assets/Scenes/TonyTestScene.unity
+    guid: f964583db4dbc124094ad9d61bdae1b6
   m_configObjects: {}

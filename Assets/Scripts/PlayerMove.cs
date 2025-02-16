@@ -11,10 +11,27 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform feetPos;
     [SerializeField] public float moveSpeed = 5f;
+ 
+
+    bool isTakingDamage;
+    bool isInvincible;
 
     private bool isGrounded = false;
     private bool isJumping = false;
     private float jumpTimer;
+
+    // New Serialize Fields for animations
+    [Header("Player Animations")]
+    [SerializeField] private AnimationClip idleAnimation;
+    [SerializeField] private AnimationClip runAnimation;
+    [SerializeField] private AnimationClip jumpAnimation;
+    [SerializeField] private AnimationClip damageAnimation;
+
+    void Start()
+    {
+
+    }
+
 
     private void Update()
     {

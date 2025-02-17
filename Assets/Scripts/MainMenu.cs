@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    public void Play() 
+    public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //GameScene
+        SceneManager.LoadScene("WorldMapScene"); //GameScene
         Debug.Log("Play button clicked");
     }
+
 
     public void Options()
     {

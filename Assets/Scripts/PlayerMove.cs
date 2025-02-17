@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform feetPos;
     [SerializeField] public float moveSpeed = 5f;
- 
+
 
     bool isTakingDamage;
     bool isInvincible;

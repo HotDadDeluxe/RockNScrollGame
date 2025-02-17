@@ -1,1 +1,1 @@
-# This repository contains our game developed on Unity: Rock 'N' Rcroll
+# This repository contains a Unity Game: Rock 'N' Rcroll

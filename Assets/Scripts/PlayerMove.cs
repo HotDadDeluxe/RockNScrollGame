@@ -11,7 +11,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform feetPos;
     [SerializeField] public float moveSpeed = 5f;
- 
 
     bool isTakingDamage;
     bool isInvincible;
@@ -20,18 +19,17 @@ public class PlayerMove : MonoBehaviour
     private bool isJumping = false;
     private float jumpTimer;
 
-    // New Serialize Fields for animations
     [Header("Player Animations")]
     [SerializeField] private AnimationClip idleAnimation;
     [SerializeField] private AnimationClip runAnimation;
     [SerializeField] private AnimationClip jumpAnimation;
     [SerializeField] private AnimationClip damageAnimation;
 
-    void Start()
-    {
+    // Invincibility and Knockback Variables
+    [SerializeField] private float invincibilityTime = 1f; // Invincibility duration
+    [SerializeField] private float knockbackForce = 10f;  // Knockback strength
 
-    }
-
+    void Start() { }
 
     private void Update()
     {
@@ -64,6 +62,43 @@ public class PlayerMove : MonoBehaviour
         {
             isJumping = false;
             jumpTimer = 0;
+        }
+    }
+
+    // Method to handle taking damage, with invincibility and knockback
+    public void TakeDamage(int damage, Vector2 knockbackDirection)
+    {
+        if (isInvincible) return;
+
+        isInvincible = true;
+        // Apply knockback force
+        rb.velocity = Vector2.zero;  // Stop current movement to apply knockback accurately
+        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+        // Start invincibility timer
+        StartCoroutine(InvincibilityCoroutine());
+
+        // You can add your health reduction here
+
+        // Play damage animation
+        PlayDamageAnimation();
+
+        // Handle player death here if health reaches 0
+    }
+
+    // Coroutine to reset invincibility after a short time
+    private IEnumerator InvincibilityCoroutine()
+    {
+        yield return new WaitForSeconds(invincibilityTime);
+        isInvincible = false;
+    }
+
+    // Play damage animation
+    void PlayDamageAnimation()
+    {
+        if (damageAnimation != null)
+        {
+            // Here you would trigger the animation for damage
         }
     }
 }

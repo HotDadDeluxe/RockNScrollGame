@@ -45,6 +45,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TonyTestScene.unity
     guid: f964583db4dbc124094ad9d61bdae1b6
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/CutScene.unity
     guid: 5f4450e21d6973240909e3f384d40901
   - enabled: 1
@@ -53,4 +54,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CorporateScene.unity
     guid: b73e950200be32145902db397ed4acee
+=======
+    path: Assets/Scenes/LevelOneBeta.unity
+    guid: 4cb590384b927d741a51103d0edc38f5
+>>>>>>> TonyBranchOne
   m_configObjects: {}

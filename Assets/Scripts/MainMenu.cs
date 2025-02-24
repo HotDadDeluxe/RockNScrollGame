@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("WorldMapScene"); //GameScene
+        SceneManager.LoadScene("CutScene"); //Loads The cutscene
         Debug.Log("Play button clicked");
     }
 

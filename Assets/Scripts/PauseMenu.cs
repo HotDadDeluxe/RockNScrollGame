@@ -37,6 +37,12 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void restartGame()
+    {
+        var currentScene = SceneManager.GetActiveScene();
+        SceneManager.SetActiveScene(currentScene);
+    }
+
     public void gotoMainMenu()
     {
         Time.timeScale = 1f;

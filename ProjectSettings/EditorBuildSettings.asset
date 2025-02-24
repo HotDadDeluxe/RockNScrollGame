@@ -44,4 +44,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TonyTestScene.unity
     guid: f964583db4dbc124094ad9d61bdae1b6
+  - enabled: 1
+    path: Assets/Scenes/CutScene.unity
+    guid: 5f4450e21d6973240909e3f384d40901
+  - enabled: 1
+    path: Assets/Scenes/ArtisticScene.unity
+    guid: 2082bde003627bb4a9dd5592807b8fea
+  - enabled: 1
+    path: Assets/Scenes/CorporateScene.unity
+    guid: b73e950200be32145902db397ed4acee
   m_configObjects: {}

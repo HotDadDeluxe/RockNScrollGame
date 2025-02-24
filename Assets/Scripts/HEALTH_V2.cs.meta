@@ -3,7 +3,12 @@ guid: 239de0a2f30cbd24493c177965478f74
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - smileSprite: {fileID: 21300000, guid: 77203b9164828614c8e9adb909556aea, type: 3}
+  - straightFaceSprite: {fileID: 21300000, guid: 92278ba4edc1b3b49b8411951dc7c992, type: 3}
+  - frownSprite: {fileID: 21300000, guid: 3c187df216273aa468e72d303fddd77a, type: 3}
+  - skullSprite: {fileID: 21300000, guid: b949172be45a4374180968b2434b733f, type: 3}
+  - healthImage: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -8,7 +7,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDistance = 0.25f;
-    [SerializeField] private float jumpTime = 0.3f;
     [SerializeField] private Transform feetPos;
     [SerializeField] public float moveSpeed = 5f;
 
@@ -18,12 +16,14 @@ public class PlayerMove : MonoBehaviour
     private bool isGrounded = false;
     private bool isJumping = false;
     private float jumpTimer;
+    [SerializeField] private float jumpTime = 0.5f;  // Time the player can hold the jump button
 
     [Header("Player Animations")]
-    [SerializeField] private AnimationClip idleAnimation;
-    [SerializeField] private AnimationClip runAnimation;
-    [SerializeField] private AnimationClip jumpAnimation;
-    [SerializeField] private AnimationClip damageAnimation;
+    [SerializeField] private Animator animator; // Reference to the Animator
+    [SerializeField] private string idleAnimation = "Idle"; // Name of the idle animation
+    [SerializeField] private string runAnimation = "Run"; // Name of the run animation
+    [SerializeField] private string jumpAnimation = "Jump"; // Name of the jump animation
+    [SerializeField] private string damageAnimation = "Damage"; // Name of the damage animation
 
     // Invincibility and Knockback Variables
     [SerializeField] private float invincibilityTime = 1f; // Invincibility duration
@@ -43,10 +43,12 @@ public class PlayerMove : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
+            jumpTimer = 0f;  // Reset the jump timer when the jump button is pressed
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Only modify the vertical velocity during the jump
+            animator.SetTrigger(jumpAnimation);  // Play jump animation
         }
 
-        // Jump timer logic
+        // Jump timer logic - allowing player to hold jump button
         if (isJumping && jumpTimer < jumpTime)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Ensure only vertical velocity is changed
@@ -63,6 +65,16 @@ public class PlayerMove : MonoBehaviour
             isJumping = false;
             jumpTimer = 0;
         }
+
+        // Run animation if the player is moving horizontally
+        if (moveSpeed != 0)
+        {
+            animator.SetBool(runAnimation, true);
+        }
+        else
+        {
+            animator.SetBool(runAnimation, false);
+        }
     }
 
     // Method to handle taking damage, with invincibility and knockback
@@ -78,10 +90,11 @@ public class PlayerMove : MonoBehaviour
         // Start invincibility timer
         StartCoroutine(InvincibilityCoroutine());
 
-        // You can add your health reduction here
-
         // Play damage animation
-        PlayDamageAnimation();
+        if (animator != null)
+        {
+            animator.SetTrigger(damageAnimation);  // Trigger damage animation
+        }
 
         // Handle player death here if health reaches 0
     }
@@ -91,14 +104,5 @@ public class PlayerMove : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibilityTime);
         isInvincible = false;
-    }
-
-    // Play damage animation
-    void PlayDamageAnimation()
-    {
-        if (damageAnimation != null)
-        {
-            // Here you would trigger the animation for damage
-        }
     }
 }

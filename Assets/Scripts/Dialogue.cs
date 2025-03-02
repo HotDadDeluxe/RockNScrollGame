@@ -15,6 +15,11 @@ public class Dialogue : MonoBehaviour
     private int index;
     public TextMeshProUGUI corporateOption;
     public TextMeshProUGUI artisticOption;
+    public Image rockmanImage;
+    public Image producerImage;
+    public Color highlightColor = Color.white;
+    public Color dimColor = Color.gray;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +29,8 @@ public class Dialogue : MonoBehaviour
 
         corporateOption.gameObject.SetActive(false);
         artisticOption.gameObject.SetActive(false);
-        corporateOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("CorporateScene"));
-        artisticOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("ArtisticScene"));
+        corporateOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("CorporateLevelOne"));
+        artisticOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("ArtisticLevelOne"));
     }
 
     // Update is called once per frame
@@ -59,6 +64,18 @@ public class Dialogue : MonoBehaviour
         var parts = dialogue[index].Split(':');
         nameComponent.text = parts[0];
         line = parts[1];
+
+        if (parts[0].Trim() == "YOU")
+        {
+            rockmanImage.color = highlightColor;
+            producerImage.color = dimColor;
+        }
+        else if (parts[0].Trim() == "PRODUCER")
+        {
+            rockmanImage.color = dimColor;
+            producerImage.color = highlightColor;
+        }
+
         foreach (char c in line.ToCharArray())
         {
             messageComponent.text += c;

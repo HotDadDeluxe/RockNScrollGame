@@ -6,13 +6,13 @@ public class WorldMap : MonoBehaviour
 {
     public void StartLevel1()
     {
-        SceneManager.LoadScene("Level 1"); //Level1Scene
+        SceneManager.LoadScene("CutScene1"); //Level1Scene
         Debug.Log("loading level 1");
     }
 
     public void StartLevel2()
     {
-        SceneManager.LoadScene("Level 2"); //Level2Scene
+        SceneManager.LoadScene("CutScene2"); //Level2Scene
         Debug.Log("loading level 2");
     }
 

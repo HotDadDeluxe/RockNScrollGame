@@ -7,20 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene("CutScene"); //Loads The cutscene
-        Debug.Log("Play button clicked");
+        SceneManager.LoadScene("WorldMapScene"); //GameScene
     }
 
 
     public void Options()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2); //OptionsScene
-        Debug.Log("Options button clicked");
+        SceneManager.LoadScene("OptiosnScene"); //OptionsScene
     }
 
     public void Quit()
     {
-        Application.Quit();
         Debug.Log("Quit button clicked");
     }
 }

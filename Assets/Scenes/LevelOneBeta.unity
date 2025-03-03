@@ -16695,7 +16695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: moveSpeed
-      value: 9
+      value: 14.57
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: runAnimation

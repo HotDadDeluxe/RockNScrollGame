@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOneBeta.unity
     guid: 4cb590384b927d741a51103d0edc38f5
+  - enabled: 1
+    path: Assets/Scenes/ShoTest.unity
+    guid: 79c843a0aa87dd34ab9c17e74eb4b888
+  - enabled: 1
+    path: Assets/Scenes/LevelOneEndScene.unity
+    guid: 9f785fdb34111bb47b7ce27a41672b08
   m_configObjects: {}

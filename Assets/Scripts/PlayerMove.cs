@@ -24,12 +24,22 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string runAnimation = "Run"; // Name of the run animation
     [SerializeField] private string jumpAnimation = "Jump"; // Name of the jump animation
     [SerializeField] private string damageAnimation = "Damage"; // Name of the damage animation
+    [SerializeField] private string slideAnimation = "Slide"; // Name of the slide animation
 
     // Invincibility and Knockback Variables
     [SerializeField] private float invincibilityTime = 1f; // Invincibility duration
     [SerializeField] private float knockbackForce = 10f;  // Knockback strength
 
-    void Start() { }
+    [Header("Slide Settings")]
+    [SerializeField] private float slideDuration = 1f; // Duration of the slide
+    [SerializeField] private Vector2 slideHitboxSize = new Vector2(1.5f, 0.5f); // Size of the hitbox during slide
+    private Vector2 originalHitboxSize; // Original size of the hitbox
+    private bool isSliding = false;
+
+    void Start()
+    {
+        originalHitboxSize = rb.GetComponent<BoxCollider2D>().size; // Store the original hitbox size
+    }
 
     private void Update()
     {
@@ -66,6 +76,12 @@ public class PlayerMove : MonoBehaviour
             jumpTimer = 0;
         }
 
+        // Slide logic
+        if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift)) && !isSliding)
+        {
+            StartCoroutine(SlideCoroutine());
+        }
+
         // Run animation if the player is moving horizontally
         if (moveSpeed != 0)
         {
@@ -75,6 +91,18 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool(runAnimation, false);
         }
+    }
+
+    private IEnumerator SlideCoroutine()
+    {
+        isSliding = true;
+        rb.GetComponent<BoxCollider2D>().size = slideHitboxSize; // Change hitbox size
+        animator.SetTrigger(slideAnimation); // Play slide animation
+
+        yield return new WaitForSeconds(slideDuration);
+
+        rb.GetComponent<BoxCollider2D>().size = originalHitboxSize; // Revert hitbox size
+        isSliding = false;
     }
 
     // Method to handle taking damage, with invincibility and knockback

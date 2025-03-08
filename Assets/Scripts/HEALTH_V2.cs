@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;  // Add this for scene management
+using UnityEngine.UI;  // Add this for UI elements
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;  // Add this for TextMeshPro
 
 public class HEALTH_V2 : MonoBehaviour
 {
@@ -9,19 +12,35 @@ public class HEALTH_V2 : MonoBehaviour
 
     public bool isInvincible = false;  // To track if the player is invincible
 
-    [Header("Health Sprites")]
-    [SerializeField] private Sprite smileSprite;   // Sprite for smile (3 health)
-    [SerializeField] private Sprite straightFaceSprite;  // Sprite for straight face (2 health)
-    [SerializeField] private Sprite frownSprite;   // Sprite for frown (1 health)
-    [SerializeField] private Sprite skullSprite;   // Sprite for skull (0 health)
+    //[Header("Health Sprites")]
+    //[SerializeField] private Sprite smileSprite;   // Sprite for smile (3 health)
+    //[SerializeField] private Sprite straightFaceSprite;  // Sprite for straight face (2 health)
+    //[SerializeField] private Sprite frownSprite;   // Sprite for frown (1 health)
+    //[SerializeField] private Sprite skullSprite;   // Sprite for skull (0 health)
 
     private SpriteRenderer spriteRenderer;
 
+    [Header("UI Elements")]
+    [SerializeField] private GameObject deathScreenUI;  // UI panel to show on death
+    [SerializeField] private GameObject healthUI;  // Text to display
+    [SerializeField] private GameObject scoreUI;
+    [SerializeField] private TextMeshProUGUI coinText;  // Text to display the score
+    [SerializeField] private TextMeshProUGUI noteText;
+    [SerializeField] private Button resetButton;  // Button to reset the scene
+    [SerializeField] private Button menuButton;  // Button to go back to the menu
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite emptyHeart;
+
+    //this is new
     private void Start()
     {
         CURhealth = maxHealth;
+        deathScreenUI.SetActive(false);  // Hide the death screen UI at the start
         spriteRenderer = GetComponent<SpriteRenderer>();  // Get the SpriteRenderer attached to the player
-        UpdateHealthSprite();  // Ensure the correct sprite is set at the start
+        UpdateHealthUI();  // Ensure the correct sprite is set at the start
+        UpdateScoreUI();
+        //UpdateHeartUI();       // Update the heart UI at the start
     }
 
     // Take damage and apply invincibility
@@ -47,7 +66,12 @@ public class HEALTH_V2 : MonoBehaviour
                 StartCoroutine(InvincibilityTimer(1f));  // 1 second of invincibility after damage
             }
 
-            UpdateHealthSprite();  // Update the sprite after taking damage
+            UpdateHealthUI();  // Update the sprite after taking damage
+            UpdateScoreUI();  // Update the heart UI when damage is taken
+        }
+        else
+        {
+            Debug.Log("Play is invincible! No damage taken.");  // Log when invincibility prevents damage
         }
     }
 
@@ -70,40 +94,95 @@ public class HEALTH_V2 : MonoBehaviour
 
         // Pause the game (stop time)
         Time.timeScale = 0f;
+        deathScreenUI.SetActive(true);
 
-        // Wait for 3 seconds while time is paused
-        yield return new WaitForSecondsRealtime(3f);  // Use WaitForSecondsRealtime to ignore time scaling
+        //if (deathScreenUI != null)
+        //{
+            
+        //}
 
-        // Reload the current scene
+        //if (scoreUI != null)
+        //{
+        //    int score = PlayerCollectibles.Instance.GetCollectibleCount("coin") + PlayerCollectibles.Instance.GetCollectibleCount("note");
+        //    coinText.text = "Coin: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
+        //    noteText.text = "Note: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
+        //}
+
+        yield return null;
+
+        // // Wait for 3 seconds while time is paused
+        // yield return new WaitForSecondsRealtime(3f);  // Use WaitForSecondsRealtime to ignore time scaling
+
+        // // Reload the current scene
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        // // Unpause the game (restore normal time scale)
+        // Time.timeScale = 1f;
+    }
+
+    private void ResetScene()
+    {
+        Time.timeScale = 1f;  // Unpause the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
-        // Unpause the game (restore normal time scale)
-        Time.timeScale = 1f;
+    // Method to go back to the menu
+    private void GoToMenu()
+    {
+        Time.timeScale = 1f;  // Unpause the game
+        SceneManager.LoadScene("MenuScene");  // Replace with your menu scene name
     }
 
     // Update the health sprite based on the current health
-    private void UpdateHealthSprite()
+    private void UpdateHealthUI()
     {
-        if (CURhealth == 3)
+        for (int i = 0; i < hearts.Length; i++)
         {
-            spriteRenderer.sprite = smileSprite;  // Display smile for 3 health
-        }
-        else if (CURhealth == 2)
-        {
-            spriteRenderer.sprite = straightFaceSprite;  // Display straight face for 2 health
-        }
-        else if (CURhealth == 1)
-        {
-            spriteRenderer.sprite = frownSprite;  // Display frown for 1 health
-        }
-        else if (CURhealth <= 0)
-        {
-            spriteRenderer.sprite = skullSprite;  // Display skull for 0 health
+            // If the index is less than current health, display a full heart.
+            if (i < CURhealth)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            // Otherwise, display an empty heart.
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
         }
     }
 
+    private void UpdateScoreUI()
+    {
+        if (coinText != null)
+        {
+            coinText.text = "Coins: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
+        }
+
+        if (noteText != null)
+        {
+            noteText.text = "Notes: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
+        }
+    }
+    // Method to update the heart UI
+    //private void UpdateHeartUI()
+    //{
+    //    for (int i = 0; i < heartImages.Length; i++)
+    //    {
+    //        if (i < CURhealth)
+    //        {
+    //            heartImages[i].sprite = fullHeart;
+    //        }
+    //        else
+    //        {
+    //            heartImages[i].sprite = emptyHeart;
+    //        }
+    //    }
+    //}
+
     void Update()
     {
+        UpdateScoreUI();
+        UpdateHealthUI();
         // You can track health here as needed (currently handled in TakeDamage method)
     }
 }

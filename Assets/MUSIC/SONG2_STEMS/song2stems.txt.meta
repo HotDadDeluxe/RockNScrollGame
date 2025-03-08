@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e02c1e140db767d498e4df4bc4ae17d3
+=======
+guid: 0a4c193f4c407b04bbd2514a25e61823
+>>>>>>> gameloop
 TextScriptImporter:
   externalObjects: {}
   userData: 

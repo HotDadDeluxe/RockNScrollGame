@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 919487853415611498eb59804f837bae
+=======
+guid: ff08536dcae56c14da39bf4dcba2c3a4
+>>>>>>> gameloop
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

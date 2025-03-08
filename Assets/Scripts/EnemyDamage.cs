@@ -16,7 +16,15 @@ public class EnemyDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Optionally, find the player GameObject and get the HEALTH_V2 component
+        if (pHealth == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                pHealth = player.GetComponent<HEALTH_V2>();
+            }
+        }
     }
 
     // Update is called once per frame

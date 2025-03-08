@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a69832136ce825b4cbb641161a6247ce
+=======
+guid: 536cd0e71f48d564caa18ada804a3fac
+>>>>>>> gameloop
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

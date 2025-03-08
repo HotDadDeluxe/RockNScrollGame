@@ -15,6 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     private bool isGrounded = false;
     private bool isJumping = false;
+    private bool isSliding = false;
     private float jumpTimer;
     [SerializeField] private float jumpTime = 0.5f;  // Time the player can hold the jump button
 
@@ -25,16 +26,21 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string jumpAnimation = "Jump"; // Name of the jump animation
     [SerializeField] private string damageAnimation = "Damage"; // Name of the damage animation
     [SerializeField] private string slideAnimation = "Slide"; // Name of the slide animation
+    private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Run = Animator.StringToHash("Run");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int Damage = Animator.StringToHash("Damage");
+    private static readonly int Slide = Animator.StringToHash("Slide");
 
     // Invincibility and Knockback Variables
     [SerializeField] private float invincibilityTime = 1f; // Invincibility duration
     [SerializeField] private float knockbackForce = 10f;  // Knockback strength
 
     [Header("Slide Settings")]
-    [SerializeField] private float slideDuration = 1f; // Duration of the slide
+    [SerializeField] private float slideDuration = 1.5f; // Duration of the slide
     [SerializeField] private Vector2 slideHitboxSize = new Vector2(1.5f, 0.5f); // Size of the hitbox during slide
     private Vector2 originalHitboxSize; // Original size of the hitbox
-    private bool isSliding = false;
+    
 
     void Start()
     {
@@ -43,25 +49,82 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        HandleMovement();
+        HandleJump();
+        HandleSlide();
+        UpdateAnimations();
+        // Check if the player is grounded
+        //isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
+
+        //// Move player to the right continuously
+        //rb.velocity = new Vector2(moveSpeed, rb.velocity.y); // Set horizontal velocity, keep the vertical one unchanged
+
+        //// Jump logic
+        //if (isGrounded && Input.GetButtonDown("Jump"))
+        //{
+        //    isJumping = true;
+        //    jumpTimer = 0f;  // Reset the jump timer when the jump button is pressed
+        //    rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Only modify the vertical velocity during the jump
+        //    animator.SetTrigger(Jump);  // Play jump animation
+        //}
+
+        //// Jump timer logic - allowing player to hold jump button
+        //if (isJumping && jumpTimer < jumpTime)
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Ensure only vertical velocity is changed
+        //    jumpTimer += Time.deltaTime;
+        //}
+        //else
+        //{
+        //    isJumping = false;
+        //}
+
+        //// Stop jumping when the button is released
+        //if (Input.GetButtonUp("Jump"))
+        //{
+        //    isJumping = false;
+        //    jumpTimer = 0;
+        //}
+
+        // Slide logic
+        //if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift)) && !isSliding)
+        //{
+        //    StartCoroutine(SlideCoroutine());
+        //}
+
+        //// Run animation if the player is moving horizontally
+        //if (moveSpeed != 0)
+        //{
+        //    //animator.SetBool(runAnimation, true);
+        //    animator.SetTrigger(Run);
+        //}
+        //else
+        //{
+        //    animator.SetBool(runAnimation, false);
+        //}
+    }
+
+    private void HandleMovement()
+    {
         // Check if the player is grounded
         isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
-
         // Move player to the right continuously
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y); // Set horizontal velocity, keep the vertical one unchanged
+    }
 
-        // Jump logic
+    private void HandleJump()
+    {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
-            jumpTimer = 0f;  // Reset the jump timer when the jump button is pressed
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Only modify the vertical velocity during the jump
-            animator.SetTrigger(jumpAnimation);  // Play jump animation
+            jumpTimer = 0f;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetTrigger(Jump);
         }
 
-        // Jump timer logic - allowing player to hold jump button
         if (isJumping && jumpTimer < jumpTime)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce); // Ensure only vertical velocity is changed
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpTimer += Time.deltaTime;
         }
         else
@@ -69,27 +132,39 @@ public class PlayerMove : MonoBehaviour
             isJumping = false;
         }
 
-        // Stop jumping when the button is released
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
             jumpTimer = 0;
         }
-
-        // Slide logic
+    }
+    private void HandleSlide()
+    {
         if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift)) && !isSliding)
         {
             StartCoroutine(SlideCoroutine());
         }
+    }
 
-        // Run animation if the player is moving horizontally
-        if (moveSpeed != 0)
+    private void UpdateAnimations()
+    {
+        if (isGrounded && !isJumping && !isSliding)
         {
-            animator.SetBool(runAnimation, true);
+            animator.SetBool(Run, moveSpeed != 0);
         }
         else
         {
-            animator.SetBool(runAnimation, false);
+            animator.SetBool(Run, false);
+        }
+
+        if (!isGrounded && isJumping)
+        {
+            animator.SetTrigger(Jump);
+        }
+
+        if (isSliding)
+        {
+            animator.SetTrigger(Slide);
         }
     }
 
@@ -97,11 +172,14 @@ public class PlayerMove : MonoBehaviour
     {
         isSliding = true;
         rb.GetComponent<BoxCollider2D>().size = slideHitboxSize; // Change hitbox size
-        animator.SetTrigger(slideAnimation); // Play slide animation
+
+        transform.rotation = Quaternion.Euler(0, 0, 90); // Set rotation to horizontal
+                                                         //animator.SetTrigger(slideAnimation); // Play slide animation
 
         yield return new WaitForSeconds(slideDuration);
 
         rb.GetComponent<BoxCollider2D>().size = originalHitboxSize; // Revert hitbox size
+        transform.rotation = Quaternion.Euler(0, 0, 0); // Reset rotation to vertical
         isSliding = false;
     }
 

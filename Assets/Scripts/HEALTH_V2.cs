@@ -22,19 +22,21 @@ public class HEALTH_V2 : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private GameObject deathScreenUI;  // UI panel to show on death
-    [SerializeField] private GameObject health1;  // Text to display
-    [SerializeField] private GameObject health2;
-    [SerializeField] private GameObject health3;
+    [SerializeField] private GameObject healthUI;  // Text to display
     [SerializeField] private GameObject scoreUI;
     [SerializeField] private TextMeshProUGUI coinText;  // Text to display the score
     [SerializeField] private TextMeshProUGUI noteText;
     [SerializeField] private Button resetButton;  // Button to reset the scene
     [SerializeField] private Button menuButton;  // Button to go back to the menu
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite fullHeart;
+    [SerializeField] private Sprite emptyHeart;
 
     //this is new
     private void Start()
     {
         CURhealth = maxHealth;
+        deathScreenUI.SetActive(false);  // Hide the death screen UI at the start
         spriteRenderer = GetComponent<SpriteRenderer>();  // Get the SpriteRenderer attached to the player
         UpdateHealthUI();  // Ensure the correct sprite is set at the start
         UpdateScoreUI();
@@ -67,6 +69,10 @@ public class HEALTH_V2 : MonoBehaviour
             UpdateHealthUI();  // Update the sprite after taking damage
             UpdateScoreUI();  // Update the heart UI when damage is taken
         }
+        else
+        {
+            Debug.Log("Play is invincible! No damage taken.");  // Log when invincibility prevents damage
+        }
     }
 
     // Coroutine to handle invincibility
@@ -88,18 +94,19 @@ public class HEALTH_V2 : MonoBehaviour
 
         // Pause the game (stop time)
         Time.timeScale = 0f;
+        deathScreenUI.SetActive(true);
 
-        if (deathScreenUI != null)
-        {
-            deathScreenUI.SetActive(true);
-        }
+        //if (deathScreenUI != null)
+        //{
+            
+        //}
 
-        if (scoreUI != null)
-        {
-            int score = PlayerCollectibles.Instance.GetCollectibleCount("coin") + PlayerCollectibles.Instance.GetCollectibleCount("note");
-            coinText.text = "Coin: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
-            noteText.text = "Note: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
-        }
+        //if (scoreUI != null)
+        //{
+        //    int score = PlayerCollectibles.Instance.GetCollectibleCount("coin") + PlayerCollectibles.Instance.GetCollectibleCount("note");
+        //    coinText.text = "Coin: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
+        //    noteText.text = "Note: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
+        //}
 
         yield return null;
 
@@ -129,9 +136,19 @@ public class HEALTH_V2 : MonoBehaviour
     // Update the health sprite based on the current health
     private void UpdateHealthUI()
     {
-        health1.SetActive(CURhealth >= 1);
-        health2.SetActive(CURhealth >= 2);
-        health3.SetActive(CURhealth >= 3);
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            // If the index is less than current health, display a full heart.
+            if (i < CURhealth)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            // Otherwise, display an empty heart.
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+        }
     }
 
     private void UpdateScoreUI()
@@ -165,6 +182,7 @@ public class HEALTH_V2 : MonoBehaviour
     void Update()
     {
         UpdateScoreUI();
+        UpdateHealthUI();
         // You can track health here as needed (currently handled in TakeDamage method)
     }
 }

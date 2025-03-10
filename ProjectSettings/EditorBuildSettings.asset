@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldMapScene.unity
     guid: b4e4e6e370843fb418e92dc289b30812
   - enabled: 1
-    path: Assets/Scenes/CutScene1.unity
+    path: Assets/Scenes/Cutscenes/CutScene1.unity
     guid: 5f4450e21d6973240909e3f384d40901
   - enabled: 1
     path: Assets/Scenes/ArtisticLevelOne.unity
@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelOneEndScene.unity
     guid: 9f785fdb34111bb47b7ce27a41672b08
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
+    guid: 458167b4648033545a0e00c5ddcb2fab
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level0.unity
+    guid: 155a9c253603cb84dac57c8ec1d2894a
   m_configObjects: {}

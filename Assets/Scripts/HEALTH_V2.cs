@@ -98,7 +98,7 @@ public class HEALTH_V2 : MonoBehaviour
 
         //if (deathScreenUI != null)
         //{
-            
+
         //}
 
         //if (scoreUI != null)
@@ -123,7 +123,9 @@ public class HEALTH_V2 : MonoBehaviour
     private void ResetScene()
     {
         Time.timeScale = 1f;  // Unpause the game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single
+
+);
     }
 
     // Method to go back to the menu

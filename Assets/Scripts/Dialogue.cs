@@ -29,8 +29,8 @@ public class Dialogue : MonoBehaviour
 
         corporateOption.gameObject.SetActive(false);
         artisticOption.gameObject.SetActive(false);
-        corporateOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("CorporateLevelOne"));
-        artisticOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("ArtisticLevelOne"));
+        // corporateOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("CorporateLevelOne"));
+        // artisticOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("ArtisticLevelOne"));
     }
 
     // Update is called once per frame
@@ -105,8 +105,20 @@ public class Dialogue : MonoBehaviour
         artisticOption.gameObject.SetActive(true);
     }
 
-    void LoadScene(string sceneName)
+    public void setRoute(string route)
     {
-        SceneManager.LoadScene(sceneName);
+        if (route == "corporate")
+        {
+            GameManager.Instance.isArtistic = false;
+        }
+        else if (route == "artistic")
+        {
+            GameManager.Instance.isArtistic = true;
+        }
+        LoadLevel();
+    }
+    private void LoadLevel()
+    {
+        GameManager.Instance.SetState(GameManager.GameState.Playing);
     }
 }

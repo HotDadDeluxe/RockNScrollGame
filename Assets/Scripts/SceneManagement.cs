@@ -32,6 +32,7 @@ public class SceneTransitionTrigger : MonoBehaviour
             {
                 audioSource.PlayOneShot(sceneChangeSound);
             }
+            // GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
 
             // Start the scene transition after the specified delay
             StartCoroutine(TransitionToSceneAfterDelay(pauseTime));

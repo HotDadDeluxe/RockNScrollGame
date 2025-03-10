@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     // public static UIManager uiManager;
     // public static UIManager uiManager;
-    public enum GameState { MainMenu, LevelSelection, Loading, CutsceneStart, CutsceneEnd, Playing, GameOver, LevelComplete }
+    public enum GameState { MainMenu, LevelSelection, CutsceneStart, CutsceneEnd, Playing, GameOver, LevelComplete }
     public GameState CurrentState { get; private set; }
     public int CurrentLevel { get; private set; } = 1;
     public int MaxLevelUnlocked { get; private set; } = 1;
@@ -27,20 +27,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // // Ensure PlayerMove object is not destroyed on load
-            // GameObject player = GameObject.FindGameObjectWithTag("Player");
-            // if (player != null)
-            // {
-            //     DontDestroyOnLoad(player);
-            // }
-
-            // // Ensure UIManager is not destroyed on load
-            // GameObject uiManager = GameObject.Find("UIManager");
-            // if (uiManager != null)
-            // {
-            //     DontDestroyOnLoad(uiManager);
-            // }
         }
         else
         {
@@ -75,6 +61,9 @@ public class GameManager : MonoBehaviour
             case GameState.Playing:
                 handlePlaying();
                 break;
+            case GameState.GameOver:
+                handleGameOver();
+                break;
             case GameState.LevelComplete:
                 handleLevelComplete();
                 break;
@@ -82,9 +71,6 @@ public class GameManager : MonoBehaviour
                 handleCutsceneEnd();
                 break;
 
-            // case GameState.GameOver:
-            //     handleGameOver();
-            //     break;
 
             default:
                 throw new System.ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -104,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void handleMainMenu()
     {
-        SceneManager.LoadSceneAsync("MainMenuScene");
+        SceneManager.LoadScene("MainMenuScene");
         Debug.Log("Main Menu!");
     }
 
@@ -112,6 +98,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("WorldMapScene");
         Debug.Log("Level Selection!");
+    }
+
+    public void handleGameOver()
+    {
+        Time.timeScale = 0f; // Pause the game
+        LevelUIManager.Instance.ShowDeathScreenUI();
+        Debug.Log("Game Over!");
     }
 
     public void handleCutsceneStart()

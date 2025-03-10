@@ -64,13 +64,12 @@ public class LevelManager : MonoBehaviour
 
     public void reloadLevel()
     {
-        GameManager.Instance.SetState(GameManager.GameState.Loading);
+        GameManager.Instance.SetState(GameManager.GameState.CutsceneStart);
     }
 
     public void gotoMainMenu()
     {
         Time.timeScale = 1f;
-
         GameManager.Instance.SetState(GameManager.GameState.MainMenu);
     }
 

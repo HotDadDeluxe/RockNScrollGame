@@ -9801,11 +9801,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1296569774}
   - {fileID: 19376509}
   - {fileID: 5911650}
   - {fileID: 2137842413}
   - {fileID: 1950860412}
-  - {fileID: 1296569774}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10045,7 +10045,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413533319}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: reloadScene
+        m_MethodName: reloadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17415,9 +17415,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1413533318}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1413533319}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: forceEndLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

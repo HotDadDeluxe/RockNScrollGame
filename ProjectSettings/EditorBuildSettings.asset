@@ -6,19 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenuScene.unity
+    path: Assets/_Scenes/MainMenuScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/WorldMapScene.unity
+    path: Assets/_Scenes/WorldMapScene.unity
     guid: b4e4e6e370843fb418e92dc289b30812
   - enabled: 1
-    path: Assets/Scenes/Cutscenes/CutScene1.unity
+    path: Assets/_Scenes/Cutscenes/CutScene1Start.unity
     guid: 5f4450e21d6973240909e3f384d40901
-  - enabled: 1
-    path: Assets/Scenes/ArtisticLevelOne.unity
+  - enabled: 0
+    path: Assets/_Scenes/ArtisticLevelOne.unity
     guid: 41df6f9cd9d750743921b70618fcd778
-  - enabled: 1
-    path: Assets/Scenes/CorporateLevelOne.unity
+  - enabled: 0
+    path: Assets/_Scenes/CorporateLevelOne.unity
     guid: 231e03aa77a6e594c82f4cc2df66cd46
   - enabled: 0
     path: Assets/Scenes/ArtisticScene.unity
@@ -27,18 +27,42 @@ EditorBuildSettings:
     path: Assets/Scenes/CorporateScene.unity
     guid: b73e950200be32145902db397ed4acee
   - enabled: 1
-    path: Assets/Scenes/LevelOneBeta.unity
+    path: Assets/_Scenes/LevelOneBeta.unity
     guid: 4cb590384b927d741a51103d0edc38f5
   - enabled: 1
-    path: Assets/Scenes/ShoTest.unity
+    path: Assets/_Scenes/Levels/ShoTest.unity
     guid: 79c843a0aa87dd34ab9c17e74eb4b888
   - enabled: 1
-    path: Assets/Scenes/LevelOneEndScene.unity
+    path: Assets/_Scenes/LevelOneEndScene.unity
     guid: 9f785fdb34111bb47b7ce27a41672b08
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels/Level1.unity
     guid: 458167b4648033545a0e00c5ddcb2fab
   - enabled: 1
-    path: Assets/Scenes/Levels/Level0.unity
-    guid: 155a9c253603cb84dac57c8ec1d2894a
+    path: Assets/_Scenes/Levels/Level0.unity
+    guid: 0e32703523d03fd4cb7c11c8830f56b9
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level1.unity
+    guid: be05a45f0d437334695ce8ff2e51ff5a
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level2.unity
+    guid: 0eddcb9e54ba6bc48a000ba95861a770
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/LoadingScene.unity
+    guid: 536d186f6afbbbe47beaf2961349fe05
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/CutScene1End.unity
+    guid: 57a8888ca7dc7ca4e97cd169ce192701
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/CutScene0End.unity
+    guid: 152a3d274e76a314199a6e27a43835da
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/CutScene0Start.unity
+    guid: 0b36eb6fa2423944a92053ef2c219d3e
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Cutscene2End.unity
+    guid: 12ecb03c5e604b246a0d63b68a26fcd7
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/CutScene2Start.unity
+    guid: 7cc3736b6b64ce540a5d965e9ee6387a
   m_configObjects: {}

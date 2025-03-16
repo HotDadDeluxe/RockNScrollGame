@@ -43,9 +43,6 @@ public class HEALTH_V2 : MonoBehaviour
             {
                 StartCoroutine(InvincibilityTimer(1f));  // 1 second of invincibility after damage
             }
-
-            // UIManager.Instance.UpdateHealthUI();   // Ensure the correct sprite is set at the start
-            // UIManager.Instance.UpdateScoreUI();
         }
         else
         {
@@ -74,11 +71,8 @@ public class HEALTH_V2 : MonoBehaviour
 
     void Update()
     {
-        // LevelManager.Instance.UpdateUI();  // Update the level time
-        // LevelManager.Instance.UpdateHealthUI(currentHealth);   // Ensure the correct sprite is set at the start
-        // LevelManager.Instance.UpdateScoreUI();
         LevelManager.Instance.UpdateHealthUI(currentHealth);  // Update the level time
         LevelManager.Instance.UpdateScoreUI();
-        // You can track health here as needed (currently handled in TakeDamage method)
+        //GameManager.Instance.UpdateHealthUI(currentHealth);  // Update the level time
     }
 }

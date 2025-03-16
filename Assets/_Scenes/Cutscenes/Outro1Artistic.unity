@@ -1163,7 +1163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.33197, y: -350}
+  m_AnchoredPosition: {x: 12.332031, y: -350}
   m_SizeDelta: {x: -239.99997, y: -700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218251541
@@ -1219,15 +1219,11 @@ MonoBehaviour:
   messageComponent: {fileID: 196034050}
   nameComponent: {fileID: 701925177}
   dialogue:
-  - YOU:...
-  - "PRODUCER:Hey look man, I\u2019ve got a big opportunity for you here. You\u2019d
-    be able to make a ton of money and live your best life!"
-  - "YOU:Well, that sounds great and all\u2026 but what about my bandmates and my
-    freedom?"
-  - "PRODUCER:Who cares about that stuff when you\u2019re making big bucks?! Anyway,
-    the choice is yours, Rockman."
-  - YOU:Making a lot of money would be nice, but I also want to make music the band
-    and I enjoy. Let me think on it.
+  - "PRODUCER:You know, I\u2019m pretty disappointed in you. We could of made a LOT
+    of money together, what a shame. "
+  - "ROCKMAN:I\u2019m doing it for what\u2019s best for the band and myself. We feel
+    happier this way"
+  - "PRODUCER:Whatever man, you\u2019ll see how it pans out!"
   textSpeed: 0.07
   corporateOption: {fileID: 1234449288}
   artisticOption: {fileID: 1025231863}
@@ -1483,7 +1479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b949172be45a4374180968b2434b733f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b0be55611c5d8941aa8b15c1598e8f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

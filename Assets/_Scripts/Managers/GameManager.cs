@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+
         Debug.Log("GameManager Awake");
         if (Instance == null)
         {
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SetState(GameState.MainMenu);
+        //SetState(GameState.MainMenu);
     }
 
     public void SetState(GameState newState)
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
     public void handleGameOver()
     {
         Time.timeScale = 0f; // Pause the game
-        LevelUIManager.Instance.ShowDeathScreenUI();
+        LevelManager.Instance.ShowDeathScreenUI();
         Debug.Log("Game Over!");
     }
 
@@ -133,7 +134,7 @@ public class GameManager : MonoBehaviour
     {
         MaxLevelUnlocked = Mathf.Max(MaxLevelUnlocked, CurrentLevel + 1);
         Time.timeScale = 0f; // Pause the game
-        LevelUIManager.Instance.ShowLevelCompleteUI();
+        LevelManager.Instance.ShowLevelCompleteUI();
         Debug.Log("Level Complete!");
     }
 
@@ -147,5 +148,10 @@ public class GameManager : MonoBehaviour
         {
             isArtistic = false;
         }
+    }
+
+    public void UpdateHealthUI(int n)
+    {
+        LevelManager.Instance.UpdateHealthUI(n);
     }
 }

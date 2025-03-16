@@ -8,7 +8,7 @@ using TMPro;  // Add this for TextMeshPro
 
 public class LevelUIManager : MonoBehaviour
 {
-    public static LevelUIManager Instance { get; private set; }
+    //public static LevelUIManager Instance { get; private set; }
     [SerializeField] private Image[] hearts;
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
@@ -20,23 +20,25 @@ public class LevelUIManager : MonoBehaviour
 
     // public static bool isPaused = false;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
+    //void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //        return;
+    //    }
+    //}
 
     void Start()
     {
+
         // HideAllUI();
+
     }
 
     public void HideAllUI()

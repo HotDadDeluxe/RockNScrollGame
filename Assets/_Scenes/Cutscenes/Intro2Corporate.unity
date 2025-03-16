@@ -1219,15 +1219,12 @@ MonoBehaviour:
   messageComponent: {fileID: 196034050}
   nameComponent: {fileID: 701925177}
   dialogue:
-  - YOU:...
-  - "PRODUCER:Hey look man, I\u2019ve got a big opportunity for you here. You\u2019d
-    be able to make a ton of money and live your best life!"
-  - "YOU:Well, that sounds great and all\u2026 but what about my bandmates and my
-    freedom?"
-  - "PRODUCER:Who cares about that stuff when you\u2019re making big bucks?! Anyway,
-    the choice is yours, Rockman."
-  - YOU:Making a lot of money would be nice, but I also want to make music the band
-    and I enjoy. Let me think on it.
+  - "PRODUCER:We\u2019ve got quite a bit of work to do. Tell your band to be ready
+    for a long day of working."
+  - "ROCKMAN:Alright, well\u2026 are we going to get some breaks?"
+  - "PRODUCER:Yeah, we\u2019re allowing you guys to have a lunch break"
+  - "ROCKMAN:That\u2019s it...?"
+  - 'ROCKMAN:This really is going to be a long day. '
   textSpeed: 0.07
   corporateOption: {fileID: 1234449288}
   artisticOption: {fileID: 1025231863}
@@ -1483,7 +1480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b949172be45a4374180968b2434b733f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b0be55611c5d8941aa8b15c1598e8f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -65,7 +65,7 @@ public class Dialogue : MonoBehaviour
         nameComponent.text = parts[0];
         line = parts[1];
 
-        if (parts[0].Trim() == "YOU")
+        if (parts[0].Trim() == "ROCKMAN")
         {
             rockmanImage.color = highlightColor;
             producerImage.color = dimColor;
@@ -74,6 +74,11 @@ public class Dialogue : MonoBehaviour
         {
             rockmanImage.color = dimColor;
             producerImage.color = highlightColor;
+        } 
+        else if (parts[0].Trim() == "BANDMATES")
+        {
+            rockmanImage.color = dimColor;
+            producerImage.color = dimColor;
         }
 
         foreach (char c in line.ToCharArray())

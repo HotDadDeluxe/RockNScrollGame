@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Dialogue : MonoBehaviour
+public class DialogueOptions : MonoBehaviour
 {
     public TextMeshProUGUI messageComponent;
     public TextMeshProUGUI nameComponent;
@@ -74,7 +74,7 @@ public class Dialogue : MonoBehaviour
         {
             rockmanImage.color = dimColor;
             producerImage.color = highlightColor;
-        } 
+        }
         else if (parts[0].Trim() == "BANDMATES")
         {
             rockmanImage.color = dimColor;
@@ -98,8 +98,9 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.SetState(GameManager.GameState.Playing);
-            // ShowOptions();
+            messageComponent.gameObject.SetActive(false); 
+            nameComponent.gameObject.SetActive(false);
+            ShowOptions();
         }
     }
 
@@ -114,10 +115,12 @@ public class Dialogue : MonoBehaviour
         if (route == "C")
         {
             GameManager.Instance.isCorporate = true;
+            GameManager.Instance.SetState(GameManager.GameState.Playing);
         }
         else if (route == "A")
         {
             GameManager.Instance.isArtistic = true;
+            GameManager.Instance.SetState(GameManager.GameState.Playing);
         }
         LoadLevel();
     }

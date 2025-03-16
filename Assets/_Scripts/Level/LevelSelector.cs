@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WorldMap : MonoBehaviour
+public class LevelSelector : MonoBehaviour
 {
-    public void loadCutscene(int levelIndex)
+    public void LoadIntro(int levelIndex)
     {
         if (levelIndex > GameManager.Instance.MaxLevelUnlocked)
         {
-            Debug.LogError("Invalid level index: " + levelIndex);
+            Debug.Log("Invalid level index: " + levelIndex);
             return;
         }
         else if (levelIndex == -1)
         {
+            Debug.Log("GameManager.GameState.MainMenu");
             GameManager.Instance.SetState(GameManager.GameState.MainMenu);
-            Debug.Log("loading main menu");
+            
             return;
         }
 
         GameManager.Instance.SetCurrentLevel(levelIndex);
-        GameManager.Instance.SetState(GameManager.GameState.CutsceneStart);
+        GameManager.Instance.SetState(GameManager.GameState.Intro);
         Debug.Log("loading level " + levelIndex);
     }
 }

@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     // public static UIManager uiManager;
     // public static UIManager uiManager;
-    public enum GameState { MainMenu, LevelSelection, CutsceneStart, CutsceneEnd, Playing, GameOver, LevelComplete }
+    public enum GameState { MainMenu, LevelSelection, Intro, Playing, Outro, GameOver, LevelComplete }
     public GameState CurrentState { get; private set; }
     public int CurrentLevel { get; private set; } = 1;
     public int MaxLevelUnlocked { get; private set; } = 1;
-    public bool isArtistic = true;
+    public bool isArtistic = false;
+    public bool isCorporate = false;
 
     public static event System.Action<GameState> OnGameStateChanged;
 
@@ -22,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-
         Debug.Log("GameManager Awake");
         if (Instance == null)
         {
@@ -53,11 +53,11 @@ public class GameManager : MonoBehaviour
             case GameState.LevelSelection:
                 handleLevelSelection();
                 break;
-            // case GameState.Loading:
-            //     handleLoading();
-            //     break;
-            case GameState.CutsceneStart:
-                handleCutsceneStart();
+            case GameState.Intro:
+                handleIntro();
+                break;
+            case GameState.Outro:
+                handleOutro();
                 break;
             case GameState.Playing:
                 handlePlaying();
@@ -68,73 +68,95 @@ public class GameManager : MonoBehaviour
             case GameState.LevelComplete:
                 handleLevelComplete();
                 break;
-            case GameState.CutsceneEnd:
-                handleCutsceneEnd();
-                break;
-
-
-            default:
-                throw new System.ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
         OnGameStateChanged?.Invoke(newState);
     }
 
-    public GameState getState()
-    {
-        return CurrentState;
-    }
+    public GameState getState() => CurrentState;
 
-    public void SetCurrentLevel(int level)
-    {
-        CurrentLevel = level;
-    }
+    public void SetCurrentLevel(int level) => CurrentLevel = level;
 
     public void handleMainMenu()
     {
-        SceneManager.LoadScene("MainMenuScene");
         Debug.Log("Main Menu!");
+        SceneManager.LoadScene("MainMenuScene");
+
     }
 
     public void handleLevelSelection()
     {
-        SceneManager.LoadScene("WorldMapScene");
+        SceneManager.LoadScene("LevelSelection");
         Debug.Log("Level Selection!");
     }
 
-    public void handleGameOver()
+    public void handleIntro()
     {
-        Time.timeScale = 0f; // Pause the game
-        LevelManager.Instance.ShowDeathScreenUI();
-        Debug.Log("Game Over!");
+        Debug.Log("handleIntro() called with level: " + CurrentLevel);
+        if (CurrentLevel == 1)
+        {
+            Debug.Log("Cutscene1Start!");
+            SceneManager.LoadScene("Intro1");
+        }
+        else if (CurrentLevel == 2)
+        {
+            if (isArtistic)
+            {
+                Debug.Log("Intro2Artistic Start!");
+                SceneManager.LoadScene("Intro2Artistic");
+                return;
+            }
+            else if (isCorporate)
+            {
+                Debug.Log("Intro2Corporate Start!");
+                SceneManager.LoadScene("Intro2Corporate");
+                return;
+            }
+        }
+        else if (CurrentLevel == 3)
+        {
+            SceneManager.LoadScene("Intro3Start");
+            Debug.Log("Cutscene3Start!");
+        }
     }
 
-    public void handleCutsceneStart()
+    public void handleOutro()
     {
-        SceneManager.LoadScene("Cutscene" + CurrentLevel + "Start");
-        Debug.Log("Cutscene" + CurrentLevel + "Start!");
-    }
-
-    public void handleCutsceneEnd()
-    {
-        SceneManager.LoadScene("Cutscene" + CurrentLevel + "End");
-        Debug.Log("Cutscene" + CurrentLevel + "End!");
+        Time.timeScale = 1f;
+        Debug.Log("Cutscene1Artistic Start!");
+        if (isArtistic)
+        {
+            Debug.Log("Outro" + CurrentLevel + "Artistic Start!");
+            SceneManager.LoadScene("Outro" + CurrentLevel + "Artistic");
+            return;
+        }
+        if (isCorporate)
+        {
+            Debug.Log("Outro" + CurrentLevel + "Corporate Start!");
+            SceneManager.LoadScene("Outro" + CurrentLevel + "Corporate");
+            return;
+        }
     }
 
     public void handlePlaying()
     {
-        Time.timeScale = 1f; // Resume the game
-        // UIManager.Instance.HideAllUI();
+        if (LevelManager.Instance != null)
+        {
+            Destroy(LevelManager.Instance.gameObject);
+        }
+        Time.timeScale = 1f; 
         Debug.Log("Loading Level " + CurrentLevel + "!");
-        // LoadLoadingScreen("Level" + CurrentLevel);
         SceneManager.LoadScene("Level" + CurrentLevel);
-        // Debug.Log("Playing Level " + CurrentLevel + "!");
+    }
+
+    public void handleGameOver()
+    {
+        Debug.Log("Game Over!");
     }
 
     public void handleLevelComplete()
     {
         MaxLevelUnlocked = Mathf.Max(MaxLevelUnlocked, CurrentLevel + 1);
         Time.timeScale = 0f; // Pause the game
-        LevelManager.Instance.ShowLevelCompleteUI();
         Debug.Log("Level Complete!");
     }
 

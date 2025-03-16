@@ -28,8 +28,6 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Assert(GameManager.Instance != null, "GameManager instance is null");
-        //Debug.Assert(false);
     }
 
     void Awake()
@@ -64,28 +62,33 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void loadEndCutscene()
-    {
-        GameManager.Instance.SetState(GameManager.GameState.CutsceneEnd);
-    }
+    //public void loadEndCutscene()
+    //{
+    //    GameManager.Instance.SetState(GameManager.GameState.CutsceneEnd);
+    //}
 
-    public void loadStartCutscene()
+    public void LoadIntro()
     {
         Time.timeScale = 1f;
-        GameManager.Instance.SetState(GameManager.GameState.CutsceneStart);
+        GameManager.Instance.SetState(GameManager.GameState.Intro);
     }
 
-    public void reloadLevel()
+    public void LoadOutro()
     {
         Time.timeScale = 1f;
-        GameManager.Instance.SetState(GameManager.GameState.CutsceneStart);
+        GameManager.Instance.SetState(GameManager.GameState.Outro);
     }
 
-    public void gotoMainMenu()
+    public void Reloadlevel()
     {
         Time.timeScale = 1f;
-        Debug.Log("gotoMainMenu called");
-        Debug.Log("Game manger instance: " + GameManager.Instance);
+        GameManager.Instance.SetState(GameManager.GameState.Playing);
+    }
+
+    public void LoadMainMenu()
+    {
+        Time.timeScale = 1f;
+        Debug.Log("LoadMainMenu() called");
         GameManager.Instance.SetState(GameManager.GameState.MainMenu);
     }
 
@@ -115,15 +118,19 @@ public class LevelManager : MonoBehaviour
     public void killPlayer()
     {
         Time.timeScale = 0f;
+        isPaused = true;
         isGameOver = true;
-        GameManager.Instance.SetState(GameManager.GameState.GameOver);
+        HidePauseMenuUI();
         ShowDeathScreenUI();
+        GameManager.Instance.SetState(GameManager.GameState.GameOver);
     }
 
-    public void forceEndLevel()
+    public void WinPlayer()
     {
         Time.timeScale = 0f;
-        GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
+        isPaused = true;
+        isGameOver = true;
+        HidePauseMenuUI();
         ShowLevelCompleteUI();
     }
 
@@ -134,12 +141,6 @@ public class LevelManager : MonoBehaviour
         HidePauseMenuUI();
     }
 
-    public void endLevel()
-    {
-        Time.timeScale = 1f;
-        GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
-        SceneManager.LoadScene("LevelOneEndScene");
-    }
 
     public void UpdateHealthUI(int currentHealth)
     {
@@ -165,44 +166,21 @@ public class LevelManager : MonoBehaviour
         {
             coinText.text = "Coins: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
         }
-
         if (noteText != null)
         {
             noteText.text = "Notes: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
         }
     }
 
-    public void ShowLevelCompleteUI()
-    {
-        levelCompleteUI.SetActive(true);
-    }
+    public void ShowLevelCompleteUI() => levelCompleteUI.SetActive(true);
 
-    public void HideLevelCompleteUI()
-    {
-        levelCompleteUI.SetActive(false);
-    }
+    public void HideLevelCompleteUI() => levelCompleteUI.SetActive(false);
 
-    public void ShowPauseMenuUI()
-    {
-        Debug.Log("ShowPauseMenuUI called");
-        pauseMenuUI.SetActive(true);
-    }
+    public void ShowPauseMenuUI() => pauseMenuUI.SetActive(true);
 
-    public void HidePauseMenuUI()
-    {
-        Debug.Log("HidePauseMenuUI called");
-        pauseMenuUI.SetActive(false);
-    }
+    public void HidePauseMenuUI() => pauseMenuUI.SetActive(false);
 
-    public void ShowDeathScreenUI()
-    {
-        Debug.Log("ShowDeathScreenUI called");
-        deathScreenUI.SetActive(true);
-    }
+    public void ShowDeathScreenUI() => deathScreenUI.SetActive(true);
 
-    public void HideDeathScreenUI()
-    {
-        Debug.Log("HideDeathScreenUI called");
-        deathScreenUI.SetActive(false);
-    }
+    public void HideDeathScreenUI() => deathScreenUI.SetActive(false);
 }

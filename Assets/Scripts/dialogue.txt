@@ -1,5 +1,0 @@
-PRODUCER: Hey look man, I’ve got a big opportunity for you here. You’d be able to make a ton of money and live your best life!
-ROCKMAN: Well, that sounds great and all… but what about my bandmates and my freedom?
-PRODUCER: Who cares about that stuff when you’re making big bucks?! Anyway, the choice is yours, Rockman.
-ROCKMAN: Making a lot of money would be nice, but I also want to make music the band and I enjoy. Let me think on it.
-#Multiple Choice for the player to choose: CORPORATE OR ARTISTIC

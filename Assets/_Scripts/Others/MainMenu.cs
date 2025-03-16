@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenu : MonoBehaviour
+{
+
+    [SerializeField] private GameObject mainMenuUI;
+    //[SerializeField] private GameObject optionsMenuUI;
+
+    public void Play()
+    {
+        // SceneManager.LoadScene("WorldMapScene"); //GameScene
+        GameManager.Instance.SetState(GameManager.GameState.LevelSelection);
+    }
+
+
+    //public void Options()
+    //{
+    //    SceneManager.LoadScene("OptiosnScene"); //OptionsScene
+    //}
+
+    public void Quit()
+    {
+        Debug.Log("Quit button clicked");
+    }
+}

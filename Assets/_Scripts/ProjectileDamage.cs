@@ -18,6 +18,10 @@ public class ProjectileDamage : MonoBehaviour
     private bool hasCollided = false;   // To prevent multiple collisions from affecting the projectile
 
     // Start is called before the first frame update
+    void Awake()
+    {
+        pHealth = FindFirstObjectByType<HEALTH_V2>();
+    }
     void Start()
     {
         // Destroy the projectile after 4 seconds if it hasn't collided

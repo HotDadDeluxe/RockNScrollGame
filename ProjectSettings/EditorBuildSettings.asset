@@ -36,10 +36,10 @@ EditorBuildSettings:
     path: Assets/_Scenes/Cutscenes/Outro2Artistic.unity
     guid: 12ecb03c5e604b246a0d63b68a26fcd7
   - enabled: 0
-    path: Assets/_Scenes/ArtisticLevelOne.unity
+    path: Assets/Scenes/ArtisticLevelOne.unity
     guid: 41df6f9cd9d750743921b70618fcd778
   - enabled: 0
-    path: Assets/_Scenes/CorporateLevelOne.unity
+    path: Assets/Scenes/CorporateLevelOne.unity
     guid: 231e03aa77a6e594c82f4cc2df66cd46
   - enabled: 0
     path: Assets/Scenes/ArtisticScene.unity
@@ -57,7 +57,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/LevelOneEndScene.unity
     guid: 9f785fdb34111bb47b7ce27a41672b08
   - enabled: 0
-    path: Assets/_Scenes/Levels/ShoTest.unity
+    path: Assets/Scenes/ShoTest.unity
     guid: 79c843a0aa87dd34ab9c17e74eb4b888
   - enabled: 0
     path: Assets/Scenes/Levels/Level1.unity

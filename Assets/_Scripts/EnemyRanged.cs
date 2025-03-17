@@ -56,6 +56,7 @@ public class EnemyAttack : MonoBehaviour
         ProjectileDamage projectileScript = enemyProjectile.GetComponent<ProjectileDamage>();
         if (projectileScript != null)
         {
+            Debug.Log("projectile script not null");
             projectileScript.direction = directionToPlayer;
             projectileScript.projectileSpeed = EnemyprojectileSpeed;
         }

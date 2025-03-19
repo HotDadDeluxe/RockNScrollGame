@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -18,7 +21,8 @@ public class LevelSelector : MonoBehaviour
             GameManager.Instance.SetState(GameManager.GameState.MainMenu);
             
             return;
-        }
+        } 
+
         Debug.Log("GameManager set current level " + levelIndex);
         GameManager.Instance.SetCurrentLevel(levelIndex);
         GameManager.Instance.SetState(GameManager.GameState.Intro);

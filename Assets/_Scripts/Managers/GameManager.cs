@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public enum GameState { MainMenu, LevelSelection, Intro, Playing, Outro, GameOver, LevelComplete }
+    public enum GameState { MainMenu, LevelSelection, Controls, Intro, Playing, Outro, GameOver, LevelComplete }
     public GameState CurrentState { get; private set; }
     public int CurrentLevel { get; private set; } = 1;
     public int MaxLevelUnlocked { get; private set; } = 1;
@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
             case GameState.MainMenu:
                 handleMainMenu();
                 break;
+            case GameState.Controls:
+                handleControls();
+                break;
             case GameState.LevelSelection:
                 handleLevelSelection();
                 break;
@@ -75,7 +78,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Main Menu!");
         SceneManager.LoadScene("MainMenuScene");
+    }
 
+    public void handleControls()
+    {
+        Debug.Log("Controls!");
+        SceneManager.LoadScene("ControlsScene");
     }
 
     public void handleLevelSelection()

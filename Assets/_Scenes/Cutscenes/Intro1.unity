@@ -1044,8 +1044,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1218251543}
-        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+      - m_Target: {fileID: 1218251544}
+        m_TargetAssemblyTypeName: IntroWithOptions, Assembly-CSharp
         m_MethodName: setRoute
         m_Mode: 5
         m_Arguments:
@@ -1135,7 +1135,6 @@ GameObject:
   - component: {fileID: 1218251540}
   - component: {fileID: 1218251542}
   - component: {fileID: 1218251541}
-  - component: {fileID: 1218251543}
   - component: {fileID: 1218251544}
   m_Layer: 5
   m_Name: DialogueBox
@@ -1205,37 +1204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218251539}
   m_CullTransparentMesh: 1
---- !u!114 &1218251543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218251539}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b9dbe2de262cb45b9191fe20701ed4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageComponent: {fileID: 196034050}
-  nameComponent: {fileID: 701925177}
-  dialogue:
-  - ROCKMAN:...
-  - "PRODUCER:Hey look man, I\u2019ve got a big opportunity for you here. You\u2019d
-    be able to make a ton of money and live your best life!"
-  - "ROCKMAN:Well, that sounds great and all\u2026 but what about my bandmates and
-    my freedom?"
-  - "PRODUCER:Who cares about that stuff when you\u2019re making big bucks?! Anyway,
-    the choice is yours, Rockman."
-  - ROCKMAN:Making a lot of money would be nice, but I also want to make music the
-    band and I enjoy. Let me think on it.
-  textSpeed: 0.07
-  corporateOption: {fileID: 1234449288}
-  artisticOption: {fileID: 1025231863}
-  rockmanImage: {fileID: 472088675}
-  producerImage: {fileID: 1440742011}
-  highlightColor: {r: 1, g: 1, b: 1, a: 1}
-  dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &1218251544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,8 +1414,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1218251543}
-        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
+      - m_Target: {fileID: 1218251544}
+        m_TargetAssemblyTypeName: IntroWithOptions, Assembly-CSharp
         m_MethodName: setRoute
         m_Mode: 5
         m_Arguments:

@@ -1,25 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    // public static UIManager uiManager;
-    // public static UIManager uiManager;
     public enum GameState { MainMenu, LevelSelection, Intro, Playing, Outro, GameOver, LevelComplete }
     public GameState CurrentState { get; private set; }
     public int CurrentLevel { get; private set; } = 1;
     public int MaxLevelUnlocked { get; private set; } = 1;
     public bool isArtistic = false;
-    public bool isCorporate = false;
 
     public static event System.Action<GameState> OnGameStateChanged;
-
-    // how do I make instances of other manager classes
-
 
     void Awake()
     {
@@ -91,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void handleIntro()
     {
+        Time.timeScale = 1f;
         Debug.Log("handleIntro() called with level: " + CurrentLevel);
         if (CurrentLevel == 1)
         {
@@ -105,7 +101,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Intro2Artistic");
                 return;
             }
-            else if (isCorporate)
+            else
             {
                 Debug.Log("Intro2Corporate Start!");
                 SceneManager.LoadScene("Intro2Corporate");
@@ -122,14 +118,14 @@ public class GameManager : MonoBehaviour
     public void handleOutro()
     {
         Time.timeScale = 1f;
-        Debug.Log("Cutscene1Artistic Start!");
+        Debug.Log("handling Outro!");
         if (isArtistic)
         {
             Debug.Log("Outro" + CurrentLevel + "Artistic Start!");
             SceneManager.LoadScene("Outro" + CurrentLevel + "Artistic");
             return;
         }
-        if (isCorporate)
+        else
         {
             Debug.Log("Outro" + CurrentLevel + "Corporate Start!");
             SceneManager.LoadScene("Outro" + CurrentLevel + "Corporate");

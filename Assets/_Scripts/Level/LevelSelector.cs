@@ -9,7 +9,7 @@ public class LevelSelector : MonoBehaviour
     {
         if (levelIndex > GameManager.Instance.MaxLevelUnlocked)
         {
-            Debug.Log("Invalid level index: " + levelIndex);
+            Debug.LogError("Invalid level index: " + levelIndex);
             return;
         }
         else if (levelIndex == -1)
@@ -19,7 +19,7 @@ public class LevelSelector : MonoBehaviour
             
             return;
         }
-
+        Debug.Log("GameManager set current level " + levelIndex);
         GameManager.Instance.SetCurrentLevel(levelIndex);
         GameManager.Instance.SetState(GameManager.GameState.Intro);
         Debug.Log("loading level " + levelIndex);

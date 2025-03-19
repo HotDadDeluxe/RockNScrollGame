@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class DialogueOptions : MonoBehaviour
+public class Intro : MonoBehaviour
 {
     public TextMeshProUGUI messageComponent;
     public TextMeshProUGUI nameComponent;
@@ -13,8 +13,6 @@ public class DialogueOptions : MonoBehaviour
     private string line;
     public float textSpeed;
     private int index;
-    public TextMeshProUGUI corporateOption;
-    public TextMeshProUGUI artisticOption;
     public Image rockmanImage;
     public Image producerImage;
     public Color highlightColor = Color.white;
@@ -24,13 +22,9 @@ public class DialogueOptions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         messageComponent.text = string.Empty;
         StartDialogue();
-
-        corporateOption.gameObject.SetActive(false);
-        artisticOption.gameObject.SetActive(false);
-        // corporateOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("CorporateLevelOne"));
-        // artisticOption.GetComponent<Button>().onClick.AddListener(() => LoadScene("ArtisticLevelOne"));
     }
 
     // Update is called once per frame
@@ -74,7 +68,7 @@ public class DialogueOptions : MonoBehaviour
         {
             rockmanImage.color = dimColor;
             producerImage.color = highlightColor;
-        }
+        } 
         else if (parts[0].Trim() == "BANDMATES")
         {
             rockmanImage.color = dimColor;
@@ -98,34 +92,7 @@ public class DialogueOptions : MonoBehaviour
         }
         else
         {
-            messageComponent.gameObject.SetActive(false); 
-            nameComponent.gameObject.SetActive(false);
-            ShowOptions();
-        }
-    }
-
-    void ShowOptions()
-    {
-        corporateOption.gameObject.SetActive(true);
-        artisticOption.gameObject.SetActive(true);
-    }
-
-    public void setRoute(string route)
-    {
-        if (route == "C")
-        {
-            GameManager.Instance.isCorporate = true;
             GameManager.Instance.SetState(GameManager.GameState.Playing);
         }
-        else if (route == "A")
-        {
-            GameManager.Instance.isArtistic = true;
-            GameManager.Instance.SetState(GameManager.GameState.Playing);
-        }
-        LoadLevel();
-    }
-    private void LoadLevel()
-    {
-        GameManager.Instance.SetState(GameManager.GameState.Playing);
     }
 }

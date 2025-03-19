@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 1218251540}
   - component: {fileID: 1218251542}
   - component: {fileID: 1218251541}
-  - component: {fileID: 1218251543}
+  - component: {fileID: 1218251544}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1204,7 +1204,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218251539}
   m_CullTransparentMesh: 1
---- !u!114 &1218251543
+--- !u!114 &1218251544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1218251539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b9dbe2de262cb45b9191fe20701ed4, type: 3}
+  m_Script: {fileID: 11500000, guid: 494cf044c46f3464a892cbc0706f2692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messageComponent: {fileID: 196034050}
@@ -1226,8 +1226,6 @@ MonoBehaviour:
   - "PRODUCER:Bah, I\u2019m sure they\u2019ll come along, they always do. Now, let\u2019s
     get to work and make some music together! "
   textSpeed: 0.07
-  corporateOption: {fileID: 1234449288}
-  artisticOption: {fileID: 1025231863}
   rockmanImage: {fileID: 472088675}
   producerImage: {fileID: 1440742011}
   highlightColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1480,7 +1478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b949172be45a4374180968b2434b733f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b0be55611c5d8941aa8b15c1598e8f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

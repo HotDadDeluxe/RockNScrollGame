@@ -106,6 +106,10 @@ public class LevelManager : MonoBehaviour
     public void resumeGame()
     {
         isPaused = false;
+        if (isGameOver)
+        {
+            return;
+        }
         Time.timeScale = 1f;
         HidePauseMenuUI();
     }
@@ -132,6 +136,7 @@ public class LevelManager : MonoBehaviour
         isGameOver = true;
         HidePauseMenuUI();
         ShowLevelCompleteUI();
+        //GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
     }
 
     public void HideAllUI()

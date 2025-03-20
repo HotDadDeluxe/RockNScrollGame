@@ -11,7 +11,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerCollectibles.Instance.Collect(collectibleType);
+            LevelManager.Instance.Collect(collectibleType);
             Destroy(gameObject);
         }
     }

@@ -26,6 +26,39 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject deathScreenUI;
     [SerializeField] private GameObject pauseMenuUI;
 
+    private Dictionary<string, int> collectiblesCount;
+
+    //private void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        DontDestroyOnLoad(gameObject);
+    //        
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+    public void Collect(string collectibleType)
+    {
+        if (collectiblesCount.ContainsKey(collectibleType))
+        {
+            collectiblesCount[collectibleType]++;
+        }
+        else
+        {
+            collectiblesCount[collectibleType] = 1;
+        }
+    }
+
+    public int GetCollectibleCount(string collectibleType)
+    {
+        return collectiblesCount.ContainsKey(collectibleType) ? collectiblesCount[collectibleType] : 0;
+    }
+
     void Start()
     {
     }
@@ -35,6 +68,7 @@ public class LevelManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            collectiblesCount = new Dictionary<string, int>();
         }
         else
         {
@@ -169,11 +203,11 @@ public class LevelManager : MonoBehaviour
     {
         if (coinText != null)
         {
-            coinText.text = "Coins: " + PlayerCollectibles.Instance.GetCollectibleCount("coin");
+            coinText.text = "Coins: " + GetCollectibleCount("coin");
         }
         if (noteText != null)
         {
-            noteText.text = "Notes: " + PlayerCollectibles.Instance.GetCollectibleCount("note");
+            noteText.text = "Notes: " + GetCollectibleCount("note");
         }
     }
 

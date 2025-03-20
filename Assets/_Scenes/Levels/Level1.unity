@@ -23575,7 +23575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: jumpForce
-      value: 19
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: m_Enabled
@@ -23583,7 +23583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: moveSpeed
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2828329100379349742, guid: 1df208153c9060c42be5b73962eb706b, type: 3}
       propertyPath: runAnimation

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,11 +28,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
-
-    void Start()
-    {
-        //SetState(GameState.MainMenu);
     }
 
     public void SetState(GameState newState)
@@ -175,9 +169,4 @@ public class GameManager : MonoBehaviour
             isArtistic = false;
         }
     }
-
-    //public void UpdateHealthUI(int n)
-    //{
-    //    LevelManager.Instance.UpdateHealthUI(n);
-    //}
 }

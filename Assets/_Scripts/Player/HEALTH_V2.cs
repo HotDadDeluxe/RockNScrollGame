@@ -71,8 +71,8 @@ public class HEALTH_V2 : MonoBehaviour
 
     void Update()
     {
-        LevelManager.Instance.UpdateHealthUI(currentHealth);  // Update the level time
-        LevelManager.Instance.UpdateScoreUI();
+        //LevelManager.Instance.UpdateHealthUI(currentHealth);  // Update the level time
+        //LevelManager.Instance.UpdateScoreUI();
         //GameManager.Instance.UpdateHealthUI(currentHealth);  // Update the level time
     }
 }

@@ -176,8 +176,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateHealthUI(int n)
-    {
-        LevelManager.Instance.UpdateHealthUI(n);
-    }
+    //public void UpdateHealthUI(int n)
+    //{
+    //    LevelManager.Instance.UpdateHealthUI(n);
+    //}
 }

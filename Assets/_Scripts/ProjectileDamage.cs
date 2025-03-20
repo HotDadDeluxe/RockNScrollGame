@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour
 {
-    public HEALTH_V2 pHealth;    // Reference to the player's health script
+    //public HEALTH_V2 pHealth;    // Reference to the player's health script
     public int damage = 1;       // Damage the projectile will deal
 
     // Adjustable knockback force in the X and Y directions
@@ -20,7 +20,7 @@ public class ProjectileDamage : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        pHealth = FindFirstObjectByType<HEALTH_V2>();
+        //pHealth = FindFirstObjectByType<HEALTH_V2>();
     }
     void Start()
     {
@@ -44,7 +44,7 @@ public class ProjectileDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Apply damage to the player
-            pHealth.TakeDamage(damage);
+            LevelManager.Instance.TakeDamage(damage);
 
             // Get the player's Rigidbody2D to apply the knockback force
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public HEALTH_V2 pHealth;
+    //public HEALTH_V2 pHealth;
     public int damage = 1;
 
     // Adjustable knockback force in the X and Y directions
@@ -16,15 +16,16 @@ public class EnemyDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         // Optionally, find the player GameObject and get the HEALTH_V2 component
-        if (pHealth == null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                pHealth = player.GetComponent<HEALTH_V2>();
-            }
-        }
+        //if (pHealth == null)
+        //{
+        //    GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //    if (player != null)
+        //    {
+        //        pHealth = player.GetComponent<HEALTH_V2>();
+        //    }
+        //}
     }
 
     // Update is called once per frame
@@ -38,7 +39,8 @@ public class EnemyDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // Apply damage to the player
-            pHealth.TakeDamage(damage);
+            //pHealth.TakeDamage(damage);
+            LevelManager.Instance.TakeDamage(damage); // Assuming LevelManager handles player health
 
             // Get the player's Rigidbody2D to apply the knockback force
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();

@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
     //public static LevelUIManager UIManager { get; private set; }
     private Boolean isPaused = false;
     private Boolean isGameOver = false;
+    public int currentHealth;
+    public int maxHealth = 3;
+    public bool isInvincible = false;
 
     //public static LevelUIManager Instance { get; private set; }
     [SerializeField] private Image[] hearts;
@@ -27,20 +30,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
 
     private Dictionary<string, int> collectiblesCount;
+    //private SpriteRenderer spriteRenderer;
 
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //        DontDestroyOnLoad(gameObject);
-    //        
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void Collect(string collectibleType)
     {
@@ -59,8 +55,51 @@ public class LevelManager : MonoBehaviour
         return collectiblesCount.ContainsKey(collectibleType) ? collectiblesCount[collectibleType] : 0;
     }
 
-    void Start()
+    public void TakeDamage(int amount)
     {
+        if (!isInvincible)
+        {
+            currentHealth -= amount;
+
+            // Clamp health to ensure it doesn't go below 0
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            // Log when damage is taken
+            Debug.Log("Player took damage! Current health: " + currentHealth);
+
+            // Activate invincibility if health goes below or equal to zero
+            if (currentHealth <= 0)
+            {
+                HandlePlayerDeath();  // Start coroutine to handle death
+            }
+            else
+            {
+                StartCoroutine(InvincibilityTimer(1f));  // 1 second of invincibility after damage
+            }
+        }
+        else
+        {
+            Debug.Log("Play is invincible! No damage taken.");  // Log when invincibility prevents damage
+        }
+    }
+
+    // Coroutine to handle invincibility
+    private IEnumerator InvincibilityTimer(float duration)
+    {
+        isInvincible = true;
+        Debug.Log("Invincibility ON!");  // Log when invincibility starts
+
+        yield return new WaitForSeconds(duration);
+
+        isInvincible = false;
+        Debug.Log("Invincibility OFF!");  // Log when invincibility ends
+    }
+
+    // Coroutine to handle player death (pause, wait, reload)
+    private void HandlePlayerDeath()
+    {
+        Debug.Log("Player died!");
+        LevelManager.Instance.killPlayer();
     }
 
     void Awake()
@@ -80,6 +119,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("LevelManager Update called");
+        UpdateHealthUI();
+        UpdateScoreUI();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Escape key pressed");
@@ -181,7 +223,7 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void UpdateHealthUI(int currentHealth)
+    public void UpdateHealthUI()
     {
         for (int i = 0; i < hearts.Length; i++)
         {

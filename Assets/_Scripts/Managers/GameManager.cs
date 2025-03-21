@@ -8,15 +8,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public enum GameState { MainMenu, LevelSelection, Controls, Intro, Playing, Outro, GameOver, LevelComplete }
-    public GameState CurrentState { get; private set; }
-    public int CurrentLevel { get; private set; } = 1;
+    [SerializeField] public GameState CurrentState;
+    [SerializeField] public int CurrentLevel;
     public int MaxLevelUnlocked { get; private set; } = 1;
-    public bool isArtistic = false;
+    private bool isArtistic;
 
     public static event System.Action<GameState> OnGameStateChanged;
 
     void Awake()
     {
+        setArtistic(false); // Default to corporate if not set
         Debug.Log("GameManager Awake");
         if (Instance == null)
         {
@@ -66,7 +67,16 @@ public class GameManager : MonoBehaviour
 
     public GameState getState() => CurrentState;
 
+    public void setArtistic(Boolean artistic) => isArtistic = artistic;
+
     public void SetCurrentLevel(int level) => CurrentLevel = level;
+    public void SetMaxLevel(int level)
+    {
+        if (level > MaxLevelUnlocked)
+        {
+            MaxLevelUnlocked = level;
+        }
+    }
 
     public void handleMainMenu()
     {

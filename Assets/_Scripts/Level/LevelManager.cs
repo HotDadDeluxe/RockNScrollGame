@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public int currentHealth;
     public int maxHealth = 3;
     public bool isInvincible = false;
+    [SerializeField] private int level;
 
     //public static LevelUIManager Instance { get; private set; }
     [SerializeField] private Image[] hearts;
@@ -35,6 +36,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        GameManager.Instance.SetCurrentLevel(level);
+        GameManager.Instance.SetMaxLevel(level);
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -70,7 +73,7 @@ public class LevelManager : MonoBehaviour
             // Activate invincibility if health goes below or equal to zero
             if (currentHealth <= 0)
             {
-                HandlePlayerDeath();  // Start coroutine to handle death
+                killPlayer();  // Start coroutine to handle death
             }
             else
             {
@@ -93,13 +96,6 @@ public class LevelManager : MonoBehaviour
 
         isInvincible = false;
         Debug.Log("Invincibility OFF!");  // Log when invincibility ends
-    }
-
-    // Coroutine to handle player death (pause, wait, reload)
-    private void HandlePlayerDeath()
-    {
-        Debug.Log("Player died!");
-        LevelManager.Instance.killPlayer();
     }
 
     void Awake()

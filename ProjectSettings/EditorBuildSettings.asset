@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Cutscenes/Outro2Artistic.unity
     guid: 12ecb03c5e604b246a0d63b68a26fcd7
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Outro2Corporate.unity
+    guid: 4428b3d2c72b1c844a647a59e715aaca
   - enabled: 0
     path: Assets/Scenes/ArtisticLevelOne.unity
     guid: 41df6f9cd9d750743921b70618fcd778

@@ -1163,7 +1163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12.33197, y: -350}
+  m_AnchoredPosition: {x: 12.332031, y: -350}
   m_SizeDelta: {x: -239.99997, y: -700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218251541
@@ -1213,25 +1213,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1218251539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b9dbe2de262cb45b9191fe20701ed4, type: 3}
+  m_Script: {fileID: 11500000, guid: 494cf044c46f3464a892cbc0706f2692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messageComponent: {fileID: 196034050}
   nameComponent: {fileID: 701925177}
   dialogue:
-  - YOU:...
-  - "PRODUCER:Hey look man, I\u2019ve got a big opportunity for you here. You\u2019d
-    be able to make a ton of money and live your best life!"
-  - "YOU:Well, that sounds great and all\u2026 but what about my bandmates and my
-    freedom?"
-  - "PRODUCER:Who cares about that stuff when you\u2019re making big bucks?! Anyway,
-    the choice is yours, Rockman."
-  - YOU:Making a lot of money would be nice, but I also want to make music the band
-    and I enjoy. Let me think on it.
+  - PRODUCER:Geez, this music sucks! I could of made it so much better and got you
+    guys rolling.
+  - "BANDMATE:Hey man, it might sound bad to you, but we\u2019ve got fans and we
+    love our own music! We\u2019re sorry you can\u2019t see the importance in it."
+  - "ROCKMAN:There\u2019s no need to call our music bad or discredit anybody. That\u2019s
+    a little rude."
+  - PRODUCER:Just how life works man. Hope you guys soon realize how much you needed
+    me!
+  - "ROCKMAN:We won\u2019t ever need you. We chose this lifestyle and there\u2019s
+    no buying happiness with fake income."
   textSpeed: 0.07
-  corporateOption: {fileID: 1234449288}
-  artisticOption: {fileID: 1025231863}
   rockmanImage: {fileID: 472088675}
+  bandmateImage: {fileID: 0}
   producerImage: {fileID: 1440742011}
   highlightColor: {r: 1, g: 1, b: 1, a: 1}
   dimColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -1501,6 +1501,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440742009}
   m_CullTransparentMesh: 1
+--- !u!1 &1945208323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945208324}
+  m_Layer: 0
+  m_Name: Management
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945208324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945208323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 436.58298, y: 121.16032, z: -2.04699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2147150431}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2147150430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2147150431}
+  - component: {fileID: 2147150432}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2147150431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147150430}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945208324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2147150432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147150430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8d52e155ec91446ba55c8079cf421e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0
+  CurrentLevel: 0
+  isArtistic: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1509,3 +1588,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1151176726}
   - {fileID: 569494126}
+  - {fileID: 1945208324}

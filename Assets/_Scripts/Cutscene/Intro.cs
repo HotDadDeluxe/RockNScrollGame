@@ -15,6 +15,7 @@ public class Intro : MonoBehaviour
     private int index;
     public Image rockmanImage;
     public Image producerImage;
+    public Image bandmateImage;
     public Color highlightColor = Color.white;
     public Color dimColor = Color.gray;
 
@@ -62,16 +63,19 @@ public class Intro : MonoBehaviour
         if (parts[0].Trim() == "ROCKMAN")
         {
             rockmanImage.color = highlightColor;
+            bandmateImage.color = dimColor;
             producerImage.color = dimColor;
         }
         else if (parts[0].Trim() == "PRODUCER")
         {
             rockmanImage.color = dimColor;
+            bandmateImage.color = dimColor;
             producerImage.color = highlightColor;
         } 
-        else if (parts[0].Trim() == "BANDMATES")
+        else if (parts[0].Trim() == "BANDMATE")
         {
             rockmanImage.color = dimColor;
+            bandmateImage.color = highlightColor;
             producerImage.color = dimColor;
         }
 

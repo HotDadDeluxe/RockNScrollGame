@@ -16,6 +16,7 @@ public class IntroWithOptions : MonoBehaviour
     public TextMeshProUGUI corporateOption;
     public TextMeshProUGUI artisticOption;
     public Image rockmanImage;
+    public Image bandmateImage;
     public Image producerImage;
     public Color highlightColor = Color.white;
     public Color dimColor = Color.gray;
@@ -69,16 +70,19 @@ public class IntroWithOptions : MonoBehaviour
         if (parts[0].Trim() == "ROCKMAN")
         {
             rockmanImage.color = highlightColor;
+            bandmateImage.color = dimColor;
             producerImage.color = dimColor;
         }
         else if (parts[0].Trim() == "PRODUCER")
         {
             rockmanImage.color = dimColor;
+            bandmateImage.color = dimColor;
             producerImage.color = highlightColor;
         }
-        else if (parts[0].Trim() == "BANDMATES")
+        else if (parts[0].Trim() == "BANDMATE")
         {
             rockmanImage.color = dimColor;
+            bandmateImage.color = highlightColor;
             producerImage.color = dimColor;
         }
 
@@ -115,12 +119,14 @@ public class IntroWithOptions : MonoBehaviour
     {
         if (route == "C")
         {
-            GameManager.Instance.isArtistic = false;
+            Debug.Log("Corporate route selected");
+            GameManager.Instance.setArtistic(false);
             GameManager.Instance.SetState(GameManager.GameState.Playing);
         }
         else if (route == "A")
         {
-            GameManager.Instance.isArtistic = true;
+            Debug.Log("Artistic route selected");
+            GameManager.Instance.setArtistic(true);
             GameManager.Instance.SetState(GameManager.GameState.Playing);
         }
         LoadLevel();

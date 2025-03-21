@@ -38,12 +38,12 @@ public class ProjectileEnemy : MonoBehaviour
         Debug.Log("Collided with: " + collision.gameObject.name);
 
         // Check if the collided object has the HEALTH_V2 component
-        HEALTH_V2 health = collision.gameObject.GetComponent<HEALTH_V2>();
+        //HEALTH_V2 health = collision.gameObject.GetComponent<HEALTH_V2>();
 
-        if (health != null)  // If the object has the HEALTH_V2 component
+        if (collision.gameObject.CompareTag("Player"))  // If the object has the HEALTH_V2 component
         {
             // Apply damage to the object
-            health.TakeDamage(damage);
+            LevelManager.Instance.TakeDamage(damage);
             Debug.Log("Damage applied to: " + collision.gameObject.name);
 
             // Check if the target object has a Rigidbody2D (for knockback)

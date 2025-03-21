@@ -13950,6 +13950,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 3
   isInvincible: 0
+  level: 1
   hearts:
   - {fileID: 1734160914}
   - {fileID: 486091001}
@@ -14227,7 +14228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8d52e155ec91446ba55c8079cf421e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isArtistic: 0
+  CurrentState: 4
+  CurrentLevel: 1
+  isArtistic: 1
 --- !u!1001 &1441964880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16948,7 +16951,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1413533319}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadIntro
+        m_MethodName: Reloadlevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23986,6 +23989,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1040141699}
+  - {fileID: 1244598162}
   - {fileID: 1199865643}
   - {fileID: 250817704}
   - {fileID: 1334271561}
@@ -24002,4 +24006,3 @@ SceneRoots:
   - {fileID: 980307775}
   - {fileID: 28961363}
   - {fileID: 1293614653}
-  - {fileID: 1244598162}

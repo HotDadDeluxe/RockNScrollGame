@@ -38,7 +38,8 @@ public class LevelManager : MonoBehaviour
         currentHealth = maxHealth;
         GameManager.Instance.SetCurrentLevel(level);
         GameManager.Instance.SetMaxLevel(level);
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        collectiblesCount = new Dictionary<string, int>();
+
     }
 
     public void Collect(string collectibleType)
@@ -98,24 +99,21 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Invincibility OFF!");  // Log when invincibility ends
     }
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            collectiblesCount = new Dictionary<string, int>();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void Awake()
+    //{
+    //    if (Instance == null)
+    //    {
+    //        Instance = this;
+    //        collectiblesCount = new Dictionary<string, int>();
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
-
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log("LevelManager Update called");
         UpdateHealthUI();
         UpdateScoreUI();
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -133,11 +131,6 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-
-    //public void loadEndCutscene()
-    //{
-    //    GameManager.Instance.SetState(GameManager.GameState.CutsceneEnd);
-    //}
 
     public void LoadIntro()
     {
@@ -160,7 +153,6 @@ public class LevelManager : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1f;
-        Debug.Log("LoadMainMenu() called");
         GameManager.Instance.SetState(GameManager.GameState.MainMenu);
     }
 
@@ -208,7 +200,6 @@ public class LevelManager : MonoBehaviour
         isGameOver = true;
         HidePauseMenuUI();
         ShowLevelCompleteUI();
-        //GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
     }
 
     public void HideAllUI()

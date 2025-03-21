@@ -114,25 +114,4 @@ public class IntroWithOptions : MonoBehaviour
         corporateOption.gameObject.SetActive(true);
         artisticOption.gameObject.SetActive(true);
     }
-
-    public void setRoute(string route)
-    {
-        if (route == "C")
-        {
-            Debug.Log("Corporate route selected");
-            GameManager.Instance.setArtistic(false);
-            GameManager.Instance.SetState(GameManager.GameState.Playing);
-        }
-        else if (route == "A")
-        {
-            Debug.Log("Artistic route selected");
-            GameManager.Instance.setArtistic(true);
-            GameManager.Instance.SetState(GameManager.GameState.Playing);
-        }
-        LoadLevel();
-    }
-    private void LoadLevel()
-    {
-        GameManager.Instance.SetState(GameManager.GameState.Playing);
-    }
 }

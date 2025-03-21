@@ -11,25 +11,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameState CurrentState;
     [SerializeField] public int CurrentLevel;
     public int MaxLevelUnlocked { get; private set; } = 1;
-    private bool isArtistic;
+    [SerializeField] private bool isArtistic;
 
     public static event System.Action<GameState> OnGameStateChanged;
 
     void Awake()
     {
-        setArtistic(false); // Default to corporate if not set
-        Debug.Log("GameManager Awake");
+        Debug.Log("GameManager awake, hash code: " + this.GetHashCode());
         if (Instance == null)
         {
+            Debug.Log("Instance set to " + this.GetHashCode());
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            Debug.Log("Duplicate GameManager, destroying " + this.GetHashCode());
             return;
         }
     }
+            
+
 
     public void SetState(GameState newState)
     {
@@ -67,7 +70,13 @@ public class GameManager : MonoBehaviour
 
     public GameState getState() => CurrentState;
 
-    public void setArtistic(Boolean artistic) => isArtistic = artistic;
+    public void setArtistic(Boolean artistic)
+    {
+        Debug.Log("Setting artistic to: " + artistic);
+        isArtistic = artistic;
+        SetState(GameState.Playing);
+        //Debug.Log("Trace: " + Environment.StackTrace);
+    }
 
     public void SetCurrentLevel(int level) => CurrentLevel = level;
     public void SetMaxLevel(int level)
@@ -166,17 +175,5 @@ public class GameManager : MonoBehaviour
         MaxLevelUnlocked = Mathf.Max(MaxLevelUnlocked, CurrentLevel + 1);
         Time.timeScale = 0f; // Pause the game
         Debug.Log("Level Complete!");
-    }
-
-    public void setRoute(String route)
-    {
-        if (route == "artistic")
-        {
-            isArtistic = true;
-        }
-        else if (route == "realistic")
-        {
-            isArtistic = false;
-        }
     }
 }

@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player has reached the goal!");
-            GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
+            LevelManager.Instance.WinPlayer();
         }
     }
 }

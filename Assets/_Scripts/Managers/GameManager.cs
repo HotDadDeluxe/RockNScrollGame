@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Debug.Log("Instance set to " + this.GetHashCode());
-            Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            Instance = this;
+            
         }
         else
         {

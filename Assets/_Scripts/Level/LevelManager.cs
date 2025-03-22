@@ -10,8 +10,10 @@ public class LevelManager : MonoBehaviour
 {
     // Start is called before the first frame update
     // public static LevelManager Instance;
-    // public static LevelUIManager UIManager;
+     //public static LevelUIManager UIManager;
     public static LevelManager Instance { get; private set; }
+    //public LevelManager Instance; // Singleton instance of LevelManager
+
     //public static LevelUIManager UIManager { get; private set; }
     private Boolean isPaused = false;
     private Boolean isGameOver = false;
@@ -39,7 +41,19 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.SetCurrentLevel(level);
         GameManager.Instance.SetMaxLevel(level);
         collectiblesCount = new Dictionary<string, int>();
+    }
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            collectiblesCount = new Dictionary<string, int>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Collect(string collectibleType)
@@ -99,18 +113,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Invincibility OFF!");  // Log when invincibility ends
     }
 
-    //void Awake()
-    //{
-    //    if (Instance == null)
-    //    {
-    //        Instance = this;
-    //        collectiblesCount = new Dictionary<string, int>();
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+  
 
     void Update()
     {

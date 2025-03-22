@@ -21,16 +21,6 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Player Animations")]
     [SerializeField] private Animator animator; // Reference to the Animator
-    [SerializeField] private string idleAnimation = "Idle"; // Name of the idle animation
-    [SerializeField] private string runAnimation = "Run"; // Name of the run animation
-    [SerializeField] private string jumpAnimation = "Jump"; // Name of the jump animation
-    [SerializeField] private string damageAnimation = "Damage"; // Name of the damage animation
-    [SerializeField] private string slideAnimation = "Slide"; // Name of the slide animation
-    //private static readonly int Idle = Animator.StringToHash("Idle");
-    //private static readonly int Run = Animator.StringToHash("Run");
-    //private static readonly int Jump = Animator.StringToHash("Jump");
-    //private static readonly int Damage = Animator.StringToHash("Damage");
-    //private static readonly int Slide = Animator.StringToHash("Slide");
 
     // Invincibility and Knockback Variables
     [SerializeField] private float invincibilityTime = 1f; // Invincibility duration
@@ -76,9 +66,9 @@ public class PlayerMove : MonoBehaviour
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
+            animator.SetBool("IsJumping", true);
             jumpTimer = 0f;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            // animator.SetTrigger(Jump);
         }
 
         if (isJumping && jumpTimer < jumpTime)
@@ -89,42 +79,38 @@ public class PlayerMove : MonoBehaviour
         else
         {
             isJumping = false;
+            animator.SetBool("IsJumping", false);
         }
 
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
+            animator.SetBool("IsJumping", false);
             jumpTimer = 0;
         }
     }
+
     private void HandleSlide()
     {
         if ((Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftShift)) && !isSliding)
         {
-            // StartCoroutine(SlideCoroutine());
+            StartCoroutine(SlideCoroutine());
         }
     }
 
     private void UpdateAnimations()
     {
-        if (isGrounded && !isJumping && !isSliding)
-        {
-            // animator.SetBool(Run, moveSpeed != 0);
-        }
-        else
-        {
-            // animator.SetBool(Run, false);
-        }
+        // Set IsRunning parameter based on movement
+        animator.SetBool("IsRunning", moveSpeed != 0 && isGrounded && !isJumping && !isSliding);
 
-        if (!isGrounded && isJumping)
-        {
-            // animator.SetTrigger(Jump);
-        }
+        // Set IsJumping parameter
+        animator.SetBool("IsJumping", isJumping);
 
-        if (isSliding)
-        {
-            // animator.SetTrigger(Slide);
-        }
+        // Set IsDamaged parameter
+        animator.SetBool("IsDamaged", isTakingDamage);
+
+        // Set IsSliding parameter
+        animator.SetBool("IsSliding", isSliding);
     }
 
     private IEnumerator SlideCoroutine()
@@ -136,7 +122,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, 90); // Set rotation to horizontal
-                                                         //animator.SetTrigger(slideAnimation); // Play slide animation
+        animator.SetBool("IsSliding", true); // Play slide animation
 
         yield return new WaitForSeconds(slideDuration);
 
@@ -146,6 +132,7 @@ public class PlayerMove : MonoBehaviour
         }
         transform.rotation = Quaternion.Euler(0, 0, 0); // Reset rotation to vertical
         isSliding = false;
+        animator.SetBool("IsSliding", false);
     }
 
     // Method to handle taking damage, with invincibility and knockback
@@ -154,6 +141,8 @@ public class PlayerMove : MonoBehaviour
         if (isInvincible) return;
 
         isInvincible = true;
+        isTakingDamage = true;
+
         // Apply knockback force
         if (rb != null)
         {
@@ -167,7 +156,7 @@ public class PlayerMove : MonoBehaviour
         // Play damage animation
         if (animator != null)
         {
-            animator.SetTrigger(damageAnimation);  // Trigger damage animation
+            animator.SetBool("IsDamaged", true);  // Trigger damage animation
         }
 
         // Handle player death here if health reaches 0
@@ -178,5 +167,7 @@ public class PlayerMove : MonoBehaviour
     {
         yield return new WaitForSeconds(invincibilityTime);
         isInvincible = false;
+        isTakingDamage = false;
+        animator.SetBool("IsDamaged", false);
     }
 }

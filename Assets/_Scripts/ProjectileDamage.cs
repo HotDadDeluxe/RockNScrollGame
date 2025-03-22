@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileDamage : MonoBehaviour
 {
-    //public HEALTH_V2 pHealth;    // Reference to the player's health script
+    public HEALTH_V2 pHealth;    // Reference to the player's health script
     public int damage = 1;       // Damage the projectile will deal
 
     // Adjustable knockback force in the X and Y directions
@@ -20,8 +20,9 @@ public class ProjectileDamage : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //pHealth = FindFirstObjectByType<HEALTH_V2>();
+        pHealth = FindFirstObjectByType<HEALTH_V2>();
     }
+
     void Start()
     {
         // Destroy the projectile after 4 seconds if it hasn't collided

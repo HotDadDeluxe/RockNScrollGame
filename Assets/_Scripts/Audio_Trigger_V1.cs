@@ -3,7 +3,7 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;  // Reference to the AudioSource
-    [SerializeField] private float targetVolume = 1f;  // Volume value when triggered (100%)
+    [SerializeField] private float targetVolume = .75f;  // Volume value when triggered (100%)
 
     private void Start()
     {

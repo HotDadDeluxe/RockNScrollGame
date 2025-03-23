@@ -72,3 +72,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Scripts/PlayerMove.cs
+Assets/Sprites/MusicNote1/MusicNote1_F4.png.meta
+Assets/Sprites/MusicNote1/MusicNote1_F4.png
+Assets/Sprites/MusicNote1/MusicNote1_F3.png.meta
+Assets/Sprites/MusicNote1/MusicNote1_F3.png
+Assets/Sprites/MusicNote1/MusicNote1_F2.png.meta
+Assets/Sprites/MusicNote1/MusicNote1_F2.png
+Assets/Sprites/MusicNote1/MusicNote1_F1.png.meta
+Assets/Sprites/MusicNote1/MusicNote1_F1.png
+Assets/Sprites/MusicNote1/MusicNote1_F0.png.meta
+Assets/Sprites/MusicNote1/MusicNote1_F0.png

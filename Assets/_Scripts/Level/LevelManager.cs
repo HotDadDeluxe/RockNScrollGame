@@ -33,7 +33,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
 
     private Dictionary<string, int> collectiblesCount;
-    //private SpriteRenderer spriteRenderer;
+
+    //damage animation set up
+    private PlayerMove playerMove;
+    private Animator animator;
+
 
     private void Start()
     {
@@ -41,6 +45,8 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.SetCurrentLevel(level);
         GameManager.Instance.SetMaxLevel(level);
         collectiblesCount = new Dictionary<string, int>();
+        playerMove = GameObject.FindWithTag("Player").GetComponent<PlayerMove>();
+        animator = playerMove.GetComponent<Animator>();
     }
 
     void Awake()
@@ -105,12 +111,12 @@ public class LevelManager : MonoBehaviour
     private IEnumerator InvincibilityTimer(float duration)
     {
         isInvincible = true;
-        // animator.SetBool IsDamaged = true goes here
+        animator.SetBool("IsDamaged", true);
         Debug.Log("Invincibility ON!");  // Log when invincibility starts
 
         yield return new WaitForSeconds(duration);
         isInvincible = false;
-        // animator.SetBool IsDamaged = false goes here
+        animator.SetBool("IsDamaged", false);
         Debug.Log("Invincibility OFF!");  // Log when invincibility ends
     }
 

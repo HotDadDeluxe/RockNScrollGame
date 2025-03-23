@@ -55,12 +55,7 @@ MonoBehaviour:
   feetPos: {fileID: 978418683512866166}
   moveSpeed: 10
   jumpTime: 0.4
-  animator: {fileID: 0}
-  idleAnimation: 
-  runAnimation: 
-  jumpAnimation: 
-  damageAnimation: 
-  slideAnimation: Slide
+  animator: {fileID: 2792737394252606520}
   invincibilityTime: 2
   knockbackForce: -46.6
   slideDuration: 1.5
@@ -85,6 +80,7 @@ GameObject:
   - component: {fileID: 1028029380689151902}
   - component: {fileID: 5005526537926949793}
   - component: {fileID: 747397707517355043}
+  - component: {fileID: 2792737394252606520}
   m_Layer: 3
   m_Name: Rockman
   m_TagString: Player
@@ -223,6 +219,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.012285709, y: 0}
   m_Size: {x: 0.8451786, y: 2}
   m_Direction: 0
+--- !u!95 &2792737394252606520
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832049748974779653}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f813b8a60edd2d345b4839d36d06a1a0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3645206456378673717
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +281,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4821259561889868633}
   - component: {fileID: 1073301664161516206}
-  - component: {fileID: 317080885443660356}
   - component: {fileID: 5297668989536468959}
   m_Layer: 0
   m_Name: MusicPlayer
@@ -384,21 +400,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &317080885443660356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6343953913255133614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 239de0a2f30cbd24493c177965478f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 3
-  isInvincible: 0
 --- !u!212 &5297668989536468959
 SpriteRenderer:
   m_ObjectHideFlags: 0

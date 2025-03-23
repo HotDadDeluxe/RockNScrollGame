@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyprojectilePrefab: {fileID: 4077677581197975219, guid: 43b917abb81138846b520f2c0d48f416, type: 3}
   spawnPoint: {fileID: 2654094733104123236}
-  attackInterval: 2
+  attackInterval: 3
   EnemyprojectileSpeed: 5
 --- !u!1 &2425526904812756154
 GameObject:

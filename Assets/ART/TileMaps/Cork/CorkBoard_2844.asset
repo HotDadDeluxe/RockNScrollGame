@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: CorkBoard_2844
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1729863675, guid: 4228b3f0d09237a4b9169f15370fc9e6, type: 3}
+  m_Sprite: {fileID: -1614622836, guid: 4228b3f0d09237a4b9169f15370fc9e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -105,11 +105,12 @@ public class LevelManager : MonoBehaviour
     private IEnumerator InvincibilityTimer(float duration)
     {
         isInvincible = true;
+        // animator.SetBool IsDamaged = true goes here
         Debug.Log("Invincibility ON!");  // Log when invincibility starts
 
         yield return new WaitForSeconds(duration);
-
         isInvincible = false;
+        // animator.SetBool IsDamaged = false goes here
         Debug.Log("Invincibility OFF!");  // Log when invincibility ends
     }
 

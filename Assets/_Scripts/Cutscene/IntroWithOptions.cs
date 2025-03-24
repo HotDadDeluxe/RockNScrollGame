@@ -103,15 +103,8 @@ public class IntroWithOptions : MonoBehaviour
         }
         else
         {
-            messageComponent.gameObject.SetActive(false); 
-            nameComponent.gameObject.SetActive(false);
-            ShowOptions();
-        }
-    }
 
-    void ShowOptions()
-    {
-        corporateOption.gameObject.SetActive(true);
-        artisticOption.gameObject.SetActive(true);
+            GameManager.Instance.SetState(GameManager.GameState.Playing);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public enum GameState { MainMenu, LevelSelection, Controls, Intro, Playing, Outro, GameOver, LevelComplete }
     [SerializeField] public GameState CurrentState;
-    [SerializeField] public int CurrentLevel;
+    [SerializeField] public int CurrentLevel {get; private set; } = 1; // Default to level 1
     public int MaxLevelUnlocked { get; private set; } = 1;
     [SerializeField] private bool isArtistic;
 

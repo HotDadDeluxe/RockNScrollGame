@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: 5f4450e21d6973240909e3f384d40901
   - enabled: 1
     path: Assets/_Scenes/Levels/Level1.unity
-    guid: be5f4f17bb039e642bb4db372729d81f
+    guid: 5781bc5743f60d84082d5aff43fcfa7f
   - enabled: 1
     path: Assets/_Scenes/Cutscenes/Outro1Artistic.unity
     guid: 57a8888ca7dc7ca4e97cd169ce192701
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Cutscenes/Intro2Corporate.unity
     guid: 7cc3736b6b64ce540a5d965e9ee6387a
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level2.unity
+    guid: 2292cbd84b7907d439f58e87220db92d
   - enabled: 1
     path: Assets/_Scenes/Levels/Level2-Old.unity
     guid: c6e55e6779e239f4594266b692218b9d
@@ -77,7 +80,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/Cutscenes/CutScene0Start.unity
     guid: 0b36eb6fa2423944a92053ef2c219d3e
-  - enabled: 1
-    path: Assets/_Scenes/Levels/Level2.unity
-    guid: 2292cbd84b7907d439f58e87220db92d
   m_configObjects: {}

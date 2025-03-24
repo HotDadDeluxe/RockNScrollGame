@@ -77,4 +77,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/Cutscenes/CutScene0Start.unity
     guid: 0b36eb6fa2423944a92053ef2c219d3e
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level2.unity
+    guid: 2292cbd84b7907d439f58e87220db92d
   m_configObjects: {}

@@ -119,31 +119,27 @@ public class GameManager : MonoBehaviour
     public void handleIntro()
     {
         Time.timeScale = 1f;
+        
         Debug.Log("handleIntro() called with level: " + CurrentLevel);
         if (CurrentLevel == 1)
         {
             Debug.Log("Cutscene1Start!");
             SceneManager.LoadScene("Intro1");
         }
-        else if (CurrentLevel == 2)
+        else if (CurrentLevel == 2 || CurrentLevel == 3)
         {
             if (isArtistic)
             {
-                Debug.Log("Intro2Artistic Start!");
-                SceneManager.LoadScene("Intro2Artistic");
+                Debug.Log("Intro" + CurrentLevel + "Artistic Start!");
+                SceneManager.LoadScene("Intro" + CurrentLevel + "Artistic");
                 return;
             }
             else
             {
-                Debug.Log("Intro2Corporate Start!");
-                SceneManager.LoadScene("Intro2Corporate");
+                Debug.Log("Intro" + CurrentLevel + "Corporate Start!");
+                SceneManager.LoadScene("Intro" + CurrentLevel + "Corporate");
                 return;
             }
-        }
-        else if (CurrentLevel == 3)
-        {
-            SceneManager.LoadScene("Intro3Start");
-            Debug.Log("Cutscene3Start!");
         }
     }
 

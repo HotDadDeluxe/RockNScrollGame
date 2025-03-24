@@ -36,14 +36,26 @@ EditorBuildSettings:
     path: Assets/_Scenes/Levels/Level2.unity
     guid: 32ec1458a36800542bb336ad35a7fe27
   - enabled: 1
-    path: Assets/_Scenes/Levels/Level2-Old.unity
-    guid: c6e55e6779e239f4594266b692218b9d
-  - enabled: 1
     path: Assets/_Scenes/Cutscenes/Outro2Artistic.unity
     guid: 12ecb03c5e604b246a0d63b68a26fcd7
   - enabled: 1
     path: Assets/_Scenes/Cutscenes/Outro2Corporate.unity
     guid: 4428b3d2c72b1c844a647a59e715aaca
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Intro3Artistic.unity
+    guid: 10efb16a7cf3f4d41bd8d3d2f7c4b895
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Intro3Corporate.unity
+    guid: 653f35465b552ec47bfeafeb1da00a0c
+  - enabled: 1
+    path: Assets/_Scenes/Levels/Level3.unity
+    guid: 553c57b290843484e84efca17cb2b1f4
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Outro3Artistic.unity
+    guid: 336a9401b12940b46a4d712ab2032e58
+  - enabled: 1
+    path: Assets/_Scenes/Cutscenes/Outro3Corporate.unity
+    guid: 9f9a1df6666971c459df5ee3abc65c3b
   - enabled: 0
     path: Assets/Scenes/ArtisticLevelOne.unity
     guid: 41df6f9cd9d750743921b70618fcd778
@@ -56,15 +68,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CorporateScene.unity
     guid: b73e950200be32145902db397ed4acee
-  - enabled: 1
+  - enabled: 0
+    path: Assets/_Scenes/Levels/Level2-Old.unity
+    guid: c6e55e6779e239f4594266b692218b9d
+  - enabled: 0
     path: Assets/_Scenes/LevelOneBeta.unity
     guid: 4cb590384b927d741a51103d0edc38f5
   - enabled: 0
-    path: Assets/_Scenes/Levels/Level0.unity
-    guid: 7ba914d64ec04424fa4a6c2128c83c87
-  - enabled: 1
     path: Assets/_Scenes/LevelOneEndScene.unity
     guid: 9f785fdb34111bb47b7ce27a41672b08
+  - enabled: 0
+    path: Assets/_Scenes/Levels/Level0.unity
+    guid: 7ba914d64ec04424fa4a6c2128c83c87
   - enabled: 0
     path: Assets/Scenes/ShoTest.unity
     guid: 79c843a0aa87dd34ab9c17e74eb4b888
@@ -80,7 +95,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/Cutscenes/CutScene0Start.unity
     guid: 0b36eb6fa2423944a92053ef2c219d3e
-  - enabled: 1
-    path: Assets/_Scenes/Levels/Level3.unity
-    guid: 553c57b290843484e84efca17cb2b1f4
   m_configObjects: {}

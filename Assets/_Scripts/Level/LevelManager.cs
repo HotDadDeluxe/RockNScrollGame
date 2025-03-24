@@ -98,7 +98,7 @@ public class LevelManager : MonoBehaviour
         if (mostCollectedItem == null)
         {
             Debug.Log("No collectibles collected yet.");
-            return;
+            GameManager.Instance.setArtistic("coin");
         }
         else if (mostCollectedItem == "coin")
         {
@@ -247,6 +247,7 @@ public class LevelManager : MonoBehaviour
         SetRoute();
         HidePauseMenuUI();
         ShowLevelCompleteUI();
+        GameManager.Instance.SetState(GameManager.GameState.LevelComplete);
     }
 
     public void HideAllUI()

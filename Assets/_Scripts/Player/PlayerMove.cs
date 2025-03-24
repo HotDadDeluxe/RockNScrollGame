@@ -56,8 +56,30 @@ public class PlayerMove : MonoBehaviour
         {
             // Check if the player is grounded
             isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
-            // Move player to the right continuously
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y); // Set horizontal velocity, keep the vertical one unchanged
+
+            // Adjust speed based on key input
+            float modifiedSpeed = moveSpeed;
+
+            // Check if the left movement keys are pressed
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                modifiedSpeed = moveSpeed * 0.9f; // Set speed to 90%
+            }
+            // Check if the right movement keys are pressed
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                modifiedSpeed = moveSpeed * 1.15f; // Set speed to 115%
+            }
+
+            // If both A/Left Arrow and D/Right Arrow are pressed, reset to original speed
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) &&
+                (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
+            {
+                modifiedSpeed = moveSpeed; // Reset to original speed
+            }
+
+            // Move player using the modified speed
+            rb.velocity = new Vector2(modifiedSpeed, rb.velocity.y); // Set horizontal velocity, keep the vertical one unchanged
         }
     }
 

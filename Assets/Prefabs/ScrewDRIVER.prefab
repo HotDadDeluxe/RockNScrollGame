@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 151.24, y: -7.4, z: 0}
-  m_LocalScale: {x: 6.0245457, y: 5.04453, z: 2.1491795}
+  m_LocalScale: {x: 7.7282867, y: 8.736016, z: 2.7569673}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   damage: 1
   knockbackForceX: 5
   knockbackForceY: 10
-  projectileSpeed: 10
+  projectileSpeed: 25.8
   direction: {x: -1, y: 0}
 --- !u!61 &4441117074805986650
 BoxCollider2D:
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0044246092, y: -0.015850767}
+  m_Offset: {x: -0.004424602, y: 0.0003693588}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -146,5 +146,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27274013, y: 0.2502385}
+  m_Size: {x: 0.27274013, y: 0.10425738}
   m_EdgeRadius: 0

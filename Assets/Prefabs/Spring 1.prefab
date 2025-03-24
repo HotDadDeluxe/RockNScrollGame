@@ -173,4 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   knockbackForceX: 0
-  knockbackForceY: 65
+  knockbackForceY: 300

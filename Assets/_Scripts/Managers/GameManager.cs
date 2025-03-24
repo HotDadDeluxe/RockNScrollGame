@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameState CurrentState;
     [SerializeField] public int CurrentLevel {get; private set; } = 1; // Default to level 1
     public int MaxLevelUnlocked { get; private set; } = 1;
-    [SerializeField] private bool isArtistic;
+    [SerializeField] public bool isArtistic;
 
     public static event System.Action<GameState> OnGameStateChanged;
 
@@ -71,12 +71,22 @@ public class GameManager : MonoBehaviour
 
     public GameState getState() => CurrentState;
 
-    public void setArtistic(Boolean artistic)
+    public void setArtistic(string collectedItems)
     {
-        Debug.Log("Setting artistic to: " + artistic);
-        isArtistic = artistic;
-        SetState(GameState.Playing);
-        //Debug.Log("Trace: " + Environment.StackTrace);
+        if (collectedItems == "coin")
+        {
+            isArtistic = false;
+        }
+        else if (collectedItems == "note")
+        {
+            isArtistic = true;
+        }
+        else
+        {
+            Debug.LogError("Invalid collected item: " + collectedItems);
+            isArtistic = true;
+            return;
+        }
     }
 
     public void SetCurrentLevel(int level) => CurrentLevel = level;

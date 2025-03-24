@@ -29,10 +29,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinText;  // Text to display the score
     [SerializeField] private TextMeshProUGUI noteText;
     [SerializeField] private GameObject levelCompleteUI;
+    [SerializeField] private GameObject artisticMessage;
+    [SerializeField] private GameObject corporateMessage;
     [SerializeField] private GameObject deathScreenUI;
     [SerializeField] private GameObject pauseMenuUI;
 
-    private Dictionary<string, int> collectiblesCount;
+    [SerializeField] private Dictionary<string, int> collectiblesCount;
+    
 
     //damage animation set up
     //private PlayerMove playerMove;
@@ -77,6 +80,39 @@ public class LevelManager : MonoBehaviour
     public int GetCollectibleCount(string collectibleType)
     {
         return collectiblesCount.ContainsKey(collectibleType) ? collectiblesCount[collectibleType] : 0;
+    }
+
+    public void SetRoute()
+    {
+        string mostCollectedItem = null;
+        int maxCount = 0;
+
+        foreach (var collectible in collectiblesCount)
+        {
+            if (collectible.Value > maxCount)
+            {
+                maxCount = collectible.Value;
+                mostCollectedItem = collectible.Key;
+            }
+        }
+        if (mostCollectedItem == null)
+        {
+            Debug.Log("No collectibles collected yet.");
+            return;
+        }
+        else if (mostCollectedItem == "coin")
+        {
+            GameManager.Instance.setArtistic("coin");
+        }
+        else if (mostCollectedItem == "note")
+        {
+            GameManager.Instance.setArtistic("note");
+        }
+        else
+        {
+            Debug.Log("No valid route found, defaulting to coin.");
+            GameManager.Instance.setArtistic("coin");
+        }
     }
 
     public void TakeDamage(int amount)
@@ -208,6 +244,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         isGameOver = true;
+        SetRoute();
         HidePauseMenuUI();
         ShowLevelCompleteUI();
     }
@@ -250,7 +287,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void ShowLevelCompleteUI() => levelCompleteUI.SetActive(true);
+    public void ShowLevelCompleteUI()
+    {
+        if (GameManager.Instance.isArtistic)
+        {
+            corporateMessage.SetActive(false);
+            artisticMessage.SetActive(true);
+        }
+        else
+        {
+            artisticMessage.SetActive(false);
+            corporateMessage.SetActive(true);
+        }
+        levelCompleteUI.SetActive(true);
+    }
+
 
     public void HideLevelCompleteUI() => levelCompleteUI.SetActive(false);
 

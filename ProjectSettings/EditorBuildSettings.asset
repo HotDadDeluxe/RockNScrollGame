@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Cutscenes/Intro2Corporate.unity
     guid: 7cc3736b6b64ce540a5d965e9ee6387a
   - enabled: 1
-    path: Assets/_Scenes/Levels/Level2.unity
+    path: Assets/_Scenes/Levels/Level2-Old.unity
     guid: c6e55e6779e239f4594266b692218b9d
   - enabled: 1
     path: Assets/_Scenes/Cutscenes/Outro2Artistic.unity
